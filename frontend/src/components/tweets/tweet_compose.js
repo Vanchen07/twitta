@@ -1,5 +1,6 @@
 import React from 'react';
-import TweetBox from './tweet_box';
+import { withRouter } from 'react-router-dom';
+import UserTweet from '../profile/user_tweets';
 
 class TweetCompose extends React.Component {
     constructor(props) {
@@ -13,9 +14,9 @@ class TweetCompose extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({ newTweet: nextProps.newTweet.text });
-    }
+    // UNSAFE_componentWillReceiveProps(nextProps) {
+    //     this.setState({ newTweet: nextProps.newTweet.text });
+    // }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -47,10 +48,10 @@ class TweetCompose extends React.Component {
                     </div>
                 </form>
                 <br />
-                <TweetBox text={this.state.newTweet} />
+                <UserTweet text={this.state.newTweet} {...this.props}/>
             </div>
         )
     }
 }
 
-export default TweetCompose;
+export default withRouter(TweetCompose);

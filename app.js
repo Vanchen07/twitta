@@ -1,5 +1,5 @@
 const mongoose = require('mongoose'); //import mongoose ORM of mongo
-const passport = require('passport');
+const passport = require('passport'); 
 
 //server/db
 const express = require("express");
@@ -11,7 +11,7 @@ const users = require("./routes/api/users");
 const tweets = require("./routes/api/tweets");
 
 //models
-const User = require('./models/User');
+// const User = require('./models/User'); //bring in User model to create new user
 
 //parsers
 const bodyParser = require('body-parser'); //Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
@@ -29,18 +29,19 @@ app.use(passport.initialize());
 
 require('./config/passport.js')(passport);
 
-app.get("/", (req, res) => {
-    const user = new User ({
-        handle: "vanessa",
-        email: "vanessa@vanessa.com",   
-        password: "password"
-    })
-    user.save()
-    res.send("Hello Hellooooo");
-});
+// for initial test before frontend
+// app.get("/", (req, res) => {
+//     const user = new User ({
+//         handle: "vanessa",
+//         email: "vanessa@vanessa.com",   
+//         password: "password"
+//     })
+//     user.save()
+//     res.send("Hello Hellooooo");
+// });
 
-app.use("/api/users", users);
-app.use("/api/tweets", tweets);
+app.use("/api/users", users); //base routes
+app.use("/api/tweets", tweets); //base routes
 
 
 const port = process.env.PORT || 5000; //specifies which port to run on

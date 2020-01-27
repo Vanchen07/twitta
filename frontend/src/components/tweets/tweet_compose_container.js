@@ -5,7 +5,7 @@ import TweetCompose from './tweet_compose';
 const mapStateToProps = (state) => {
     return {
         currentUser: state.session.user,
-        newTweet: state.tweets.new
+        newTweet: state.tweets.new,
     };
 };
 

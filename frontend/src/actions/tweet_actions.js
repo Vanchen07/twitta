@@ -1,12 +1,18 @@
-import { getTweets, getUserTweets, writeTweet } from '../util/tweet_api_util';
+import { getTweets, getUserTweets, writeTweet, deleteTweet } from '../util/tweet_api_util';
 
 export const RECEIVE_TWEETS = "RECEIVE_TWEETS";
+export const RECEIVE_TWEET = "RECEIVE_TWEET";
 export const RECEIVE_USER_TWEETS = "RECEIVE_USER_TWEETS";
 export const RECEIVE_NEW_TWEET = "RECEIVE_NEW_TWEET";
 
 export const receiveTweets = tweets => ({
     type: RECEIVE_TWEETS,
     tweets
+});
+
+export const receiveTweet = tweet => ({
+    type: RECEIVE_TWEET,
+    tweet
 });
 
 export const receiveUserTweets = tweets => ({
@@ -18,6 +24,8 @@ export const receiveNewTweet = tweet => ({
     type: RECEIVE_NEW_TWEET,
     tweet
 })
+
+////////////////////////////////////////////////
 
 export const fetchTweets = () => dispatch => (
     getTweets()
@@ -34,5 +42,11 @@ export const fetchUserTweets = id => dispatch => (
 export const composeTweet = data => dispatch => (
     writeTweet(data)
         .then(tweet => dispatch(receiveNewTweet(tweet)))
+        .catch(err => console.log(err))
+);
+
+export const removeTweet = id => dispatch => (
+    deleteTweet(id)
+        .then((tweet) => dispatch(receiveTweet(tweet)))
         .catch(err => console.log(err))
 );
