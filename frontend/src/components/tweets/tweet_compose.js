@@ -36,7 +36,7 @@ class TweetCompose extends React.Component {
 
     render() {
         return (
-            <div>
+            <div> Write a Tweet here
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <input type="textarea"
