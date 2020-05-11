@@ -3,21 +3,21 @@ import { withRouter } from 'react-router-dom';
 import TweetBox from './tweet_box';
 
 class Tweet extends React.Component {
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
 
-        this.state = {
-            tweets: []
-        }
-    }
+    //     // this.state = {
+    //     //     tweets: []
+    //     // }
+    // }
 
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
         this.props.fetchTweets();
     }
 
-    UNSAFE_componentWillReceiveProps(newState) {
-        this.setState({ tweets: newState.tweets });
-    }
+    // UNSAFE_componentWillReceiveProps(newState) {
+    //     this.setState({ tweets: newState.tweets });
+    // }
 
     render() {
         if (!this.props.tweets.length === 0) {

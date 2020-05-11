@@ -1,4 +1,4 @@
-const validator = require("validator"); //libray of string validators
+const validator = require("validator"); //library of string validators
 const validText = require("./valid-text");
 
 module.exports = function(data) {
