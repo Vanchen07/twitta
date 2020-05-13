@@ -6,6 +6,16 @@ const express = require("express");
 const app = express(); // creates new express server
 const db = require('./config/keys').mongoURI; //import key
 
+//deploy to heroku
+const path = require('path');
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('frontend/build'));
+    app.get('/', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    })
+}
+
 //routes
 const users = require("./routes/api/users");
 const tweets = require("./routes/api/tweets");
@@ -28,6 +38,7 @@ app.use(bodyParser.json()); //tell app to respond to json requests
 app.use(passport.initialize());
 
 require('./config/passport.js')(passport);
+
 
 // for initial test before frontend
 // app.get("/", (req, res) => {
