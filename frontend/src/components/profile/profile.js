@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import UserTweet from './user_tweets';
-import TweetComposeContainer from '../tweets/tweet_compose_container';
+// import TweetComposeContainer from '../tweets/tweet_compose_container';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -32,7 +32,7 @@ class Profile extends React.Component {
         } else {
             return (
               <div>
-                <TweetComposeContainer {...this.props} />
+                {/* <TweetComposeContainer {...this.props} /> */}
                 <h2>{`All of your Tweets`}</h2>
                 {this.props.tweets.map(tweet => (
                     <UserTweet key={tweet._id} tweet={tweet} text={tweet.text} removeTweet={this.props.removeTweet} />

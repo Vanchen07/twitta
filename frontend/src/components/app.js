@@ -11,7 +11,7 @@ import ProfileContainer from './profile/profile_container';
 import TweetComposeContainer from './tweets/tweet_compose_container';
 
 const App = () => (
-  <div>
+  <div className="app">
     <NavBarContainer />
     <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />

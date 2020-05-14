@@ -15,3 +15,9 @@ span, article, footer, time, small {
   box-sizing: inherit;
   background: transparent;
 }
+
+.app {
+  background-color: #001935;
+  height: 100vh;
+  width: 100vw;
+}
