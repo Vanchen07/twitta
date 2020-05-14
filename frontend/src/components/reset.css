@@ -17,7 +17,7 @@ span, article, footer, time, small {
 }
 
 .app {
-  background-color: #001935;
+  /* background-color: #001935; */
   height: 100vh;
   width: 100vw;
 }
