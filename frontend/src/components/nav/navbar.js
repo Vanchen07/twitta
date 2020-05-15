@@ -51,7 +51,8 @@ class NavBar extends React.Component {
         return (
           <div className="navbar">
             <Link to="/">
-              <h1>Twitta</h1>
+              {/* <h1>Twitta</h1> */}
+              <i className="fas fa-feather-alt fa-3x"></i>
             </Link>
             {this.getLinks()}
           </div>

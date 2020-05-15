@@ -1,8 +1,10 @@
 .tweetbox {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    border:  solid 1px ;
+    margin-top: 4px;
 }
 
-/* .tweets {
-  
-} */
+
