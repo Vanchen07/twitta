@@ -1,6 +1,7 @@
 const validator = require('validator');
 const validText = require('./valid-text');
 
+//create validation for tweets using validator library
 module.exports = function validateTweetInput(data) {
     let errors = {};
 
