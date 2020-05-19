@@ -12,6 +12,7 @@ class MainPage extends React.Component {
                     Follow your interests.
                     Hear what people are talking about.
                     Join the conversation.
+                    Make a tweet!
                     <TweetsContainer />
             </div>
         );
