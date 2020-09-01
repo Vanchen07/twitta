@@ -5,6 +5,7 @@ export const getTweets = () => { //get all tweets
 };
 
 export const getUserTweets = id => { //get tweets for a user
+    // debugger
     return axios.get(`/api/tweets/user/${id}`)
 };
 

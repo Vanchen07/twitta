@@ -8,7 +8,7 @@ const passport = require('passport');
 const express = require('express');
 const db = require('./config/keys').mongoURI; //import key, 
 
-//deploy to heroku
+//deploy to heroku, use node's path module
 const path = require('path');
 
 //routes
@@ -29,6 +29,7 @@ mongoose
 
 const app = express(); // creates new express server
 
+//becase we are using create react app, 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('frontend/build'));
     app.get('/', (req, res) => {
@@ -43,7 +44,6 @@ app.use(bodyParser.json()); //tell app to respond to json requests
 app.use(passport.initialize()); //middleware is required to initialize Passport
 require('./config/passport.js')(passport);//use this to check if user is already logged in, bootstrap user
 
-
 // for initial test before frontend
 // app.get("/", (req, res) => {
 //     const user = new User ({
@@ -54,7 +54,7 @@ require('./config/passport.js')(passport);//use this to check if user is already
 //     user.save()
 //     res.send("Hello Hellooooo");
 // });
-
+// app.get("/", (req, res) => res.send("hello i am in app js"))
 app.use("/api/users", users); //base routes
 app.use("/api/tweets", tweets); //base routes
 

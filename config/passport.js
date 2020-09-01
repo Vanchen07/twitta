@@ -1,13 +1,15 @@
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
-const mongoose = require('mongoose');
 const keys = require('./keys');
+const mongoose = require('mongoose');
 
 const User = mongoose.model('users');
 
 //on initial express server app load, 
 //create options hash and call extractjwt
+    //which is our strategy configured to read the JWT from the Authorization http headers of each request.
 //also add secret key from our keys file
+    //which is the secret that our tokens will be signed with. 
 const options = {};
 options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 options.secretOrKey = keys.secretOrKey;

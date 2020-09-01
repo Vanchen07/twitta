@@ -5,10 +5,11 @@ const validateTweetInput = require("../../validation/tweets");
 const Tweet = require("../../models/Tweet");
 
 
-router.get("/alltweets", (req, res) => res.json({ msg: "This is the tweets test route" })); // The callback for every Express route requires a request and response as arguments
+// router.get("/alltweets", (req, res) => res.json({ msg: "This is the tweets test route" })); // The callback for every Express route requires a request and response as arguments
 
 router.get('/', (req, res) => { //get all tweets
     // console.log("get me all tweets")
+    // debugger
     Tweet.find()
       .populate('user')
       .sort({ date: -1 })
@@ -17,6 +18,7 @@ router.get('/', (req, res) => { //get all tweets
 });
 
 router.get('/user/:user_id', (req, res) => { //get all tweets for the user
+    // debugger
     Tweet.find({ user: req.params.user_id })
         .then(tweets => res.json(tweets))
         .catch(err =>
