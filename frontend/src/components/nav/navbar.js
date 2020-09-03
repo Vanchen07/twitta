@@ -20,10 +20,10 @@ class NavBar extends React.Component {
             return (
               <div className="navbar-right">
                 <div className="navbar-right-items">
-                  <Link to={"/"}>All Tweets</Link>
+                  <Link to={"/"}>All Burps</Link>
                 </div>
                 <div className="navbar-right-items">
-                  <Link to={"/new_tweet"}>Write a Tweet</Link>
+                  <Link to={"/new_tweet"}>New Burp</Link>
                 </div>
                 <div className="navbar-right-items">
                   <Link to={"/profile"}>{this.props.handle}</Link>

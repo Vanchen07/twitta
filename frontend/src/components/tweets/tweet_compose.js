@@ -24,7 +24,7 @@ class TweetCompose extends React.Component {
             text: this.state.text
         };
 
-        this.props.composeTweet(tweet).then(this.props.history.push("/"));
+        this.props.composeTweet(tweet).then(this.props.history.push("/profile"));
         this.setState({ text: '' })
     }
 
