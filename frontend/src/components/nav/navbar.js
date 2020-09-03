@@ -18,20 +18,20 @@ class NavBar extends React.Component {
     getLinks() {
         if (this.props.loggedIn) {
             return (
-                <div className="navbar-right">
-                    <div className="navbar-right-items">
-                        <Link to={'/'}>All Tweets</Link>
-                    </div>
-                    <div className="navbar-right-items">
-                        <Link to={'/profile'}>Profile</Link>
-                    </div>
-                    <div className="navbar-right-items">
-                        <Link to={'/new_tweet'}>Write a Tweet</Link>
-                    </div>
-                    <div className="navbar-right-items">
-                        <button onClick={this.logoutUser}>Logout</button>
-                    </div>
+              <div className="navbar-right">
+                <div className="navbar-right-items">
+                  <Link to={"/"}>All Tweets</Link>
                 </div>
+                <div className="navbar-right-items">
+                  <Link to={"/new_tweet"}>Write a Tweet</Link>
+                </div>
+                <div className="navbar-right-items">
+                  <Link to={"/profile"}>{this.props.handle}</Link>
+                </div>
+                <div className="navbar-right-items">
+                  <button onClick={this.logoutUser}>Logout</button>
+                </div>
+              </div>
             );
         } else {
             return (

@@ -34,8 +34,16 @@ class Profile extends React.Component {
               <div>
                 {/* <TweetComposeContainer {...this.props} /> */}
                 <h2>{`All of your Tweets`}</h2>
-                {this.props.tweets.map(tweet => (
-                    <UserTweet key={tweet._id} tweet={tweet} text={tweet.text} removeTweet={this.props.removeTweet} />
+                {/* <TweetComposeContainer /> */}
+                {this.props.tweets.map((tweet) => (
+                  <UserTweet
+                    key={tweet._id}
+                    tweet={tweet}
+                    text={tweet.text}
+                    currentUser={this.props.currentUser}
+                    fetchUserTweets={this.props.fetchUserTweets}
+                    removeTweet={this.props.removeTweet}
+                  />
                 ))}
               </div>
             );

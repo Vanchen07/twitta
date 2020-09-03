@@ -9,7 +9,9 @@ class UserTweet extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-        this.props.removeTweet(this.props.tweet._id)
+        this.props
+          .removeTweet(this.props.tweet._id)
+          .then(() => this.props.fetchUserTweets(this.props.currentUser.id));
     }
 
     render() {

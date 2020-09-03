@@ -17,5 +17,6 @@
 
 .navbar-right-items {
     padding: 8px;
+    text-transform: capitalize;
 }
 

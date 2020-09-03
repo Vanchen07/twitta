@@ -24,7 +24,7 @@ class TweetCompose extends React.Component {
             text: this.state.text
         };
 
-        this.props.composeTweet(tweet);
+        this.props.composeTweet(tweet).then(this.props.history.push("/"));
         this.setState({ text: '' })
     }
 
@@ -48,7 +48,7 @@ class TweetCompose extends React.Component {
                     </div>
                 </form>
                 <br />
-                <UserTweet text={this.state.newTweet} {...this.props}/>
+                {/* <UserTweet text={this.state.newTweet} {...this.props}/> */}
             </div>
         )
     }
