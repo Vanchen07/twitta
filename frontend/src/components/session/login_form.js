@@ -1,6 +1,8 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import './session.css';
+import menu from '../../images/menu.png';
+import rice from '../../images/rice.png';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -61,27 +63,38 @@ class LoginForm extends React.Component {
     render() {
         return (
             <div className="form-wrapper">
-                <form className="form" onSubmit={this.handleSubmit}>
-                    <h1>
-                        Log In
-                    </h1>
-                    <div className="input-wrapper">
-                        <input type="text"
-                            value={this.state.email}
-                            onChange={this.update('email')}
-                            placeholder="Email"
-                        />
-                        <br />
-                        <input type="password"
-                            value={this.state.password}
-                            onChange={this.update('password')}
-                            placeholder="Password"
-                        />
-                        <br />
-                        <input type="submit" value="Submit" />
-                        {this.renderErrors()}
+                <div className="form-container">
+                    <div className="form-image">
+                        <img src={menu}></img>
                     </div>
-                </form>
+                    
+                    <form className="form" onSubmit={this.handleSubmit}>
+                        <div className="form-header">
+                            <Link to='/'>
+                                <img src={rice}></img>
+                            </Link>
+                            <h1>
+                                Welcome Back!
+                            </h1>
+                        </div>
+                        <div className="input-wrapper">
+                            <input type="text"
+                                value={this.state.email}
+                                onChange={this.update('email')}
+                                placeholder="Email"
+                            />
+                            <br />
+                            <input type="password"
+                                value={this.state.password}
+                                onChange={this.update('password')}
+                                placeholder="Password"
+                            />
+                            <br />
+                            <input type="submit" value="Submit" />
+                            {this.renderErrors()}
+                        </div>
+                    </form>
+                </div>
             </div>
         );
     }
