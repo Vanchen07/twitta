@@ -12,13 +12,9 @@ span, article, footer, time, small, div {
   text-align: inherit;
   text-decoration: inherit;
   vertical-align: inherit;
-  box-sizing: inherit;
+  box-sizing: border-box;
   background: transparent;
   text-decoration: none;
-}
-
-* {
-    box-sizing: border-box;
 }
 
 .app {
