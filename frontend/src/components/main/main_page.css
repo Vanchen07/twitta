@@ -3,8 +3,7 @@
     height: 800px;
     display: flex;
     flex-direction: column;
-    /* background-color: #001935; */
-    margin-left: 120px;
-    margin-right: 120px;
+    justify-content: center;
+    align-items: center;
 }
 

@@ -8,11 +8,11 @@ class MainPage extends React.Component {
     render() {
         return (
             <div className="main-page">
-                    See what’s burping in the world right now
+                    {/* See what’s burping in the world right now
                     Follow your cravings.
                     Hear what people are drooling about.
                     Join the conversation.
-                    Make a burp!
+                    Make a burp! */}
                     <TweetsContainer />
             </div>
         );
