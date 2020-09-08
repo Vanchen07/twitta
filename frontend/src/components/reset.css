@@ -17,6 +17,10 @@ span, article, footer, time, small, div {
   text-decoration: none;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 .app {
   /* background-color: #001935; */
   height: 100vh;
