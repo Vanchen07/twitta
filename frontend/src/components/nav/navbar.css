@@ -36,9 +36,13 @@
 .navbar-right-items button {
     width: 75px;
     height: 30px;
-    font-family: 'Lato', sans-serif;
     font-size: 16px;
-    background-color: white;
-    border-radius: 3px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 4px;
+    background-color: salmon;
+    text-align: center;
+    color: white;
+    cursor: pointer;
 }
 

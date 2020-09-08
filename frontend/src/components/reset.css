@@ -15,6 +15,7 @@ span, article, footer, time, small, div {
   box-sizing: border-box;
   background: transparent;
   text-decoration: none;
+  font-family: 'Lato', sans-serif;
 }
 
 .app {

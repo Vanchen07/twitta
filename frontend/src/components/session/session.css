@@ -76,8 +76,6 @@
 
 input[type=submit] {
     background-color: salmon;
-    width: 20%;
-    font-family: 'Lato', sans-serif;
     text-align: center;
     color: white;
     cursor: pointer;
