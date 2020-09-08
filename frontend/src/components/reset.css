@@ -2,7 +2,7 @@ html, body, header, nav, h1, a,
 ul, li, strong, main, i,
 section, img, div, h2, p, form,
 fieldset, label, input, textarea,
-span, article, footer, time, small {
+span, article, footer, time, small, div {
   margin: 0;
   padding: 0;
   border: 0;
@@ -14,10 +14,12 @@ span, article, footer, time, small {
   vertical-align: inherit;
   box-sizing: inherit;
   background: transparent;
+  text-decoration: none;
 }
 
 .app {
   /* background-color: #001935; */
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
 }
