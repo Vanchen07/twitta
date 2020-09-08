@@ -66,7 +66,11 @@ class LoginForm extends React.Component {
                 <div className="form-container">
                     <div className="form-image">
                         <img src={menu}></img>
+                        <div>
+                            Don't have an account? <Link to='/signup'>Join us!</Link>
+                        </div>
                     </div>
+                                    
                     
                     <form className="form" onSubmit={this.handleSubmit}>
                         <div className="form-header">
@@ -90,7 +94,7 @@ class LoginForm extends React.Component {
                                 placeholder="Password"
                             />
                             <br />
-                            <input type="submit" value="Submit" />
+                            <input type="submit" value="Login" />
                             {this.renderErrors()}
                         </div>
                     </form>

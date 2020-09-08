@@ -13,13 +13,16 @@
     border-radius: 5px;
     height: 60%;
     width: 75%;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 .form-image {
     width: 50%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0 20px;
 }
 
 .form-image img {
@@ -27,8 +30,13 @@
     height: 75%;
 }
 
+.form-image a {
+    color: salmon;
+}
+
 .form {
     width: 50%;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -40,6 +48,7 @@
     align-items: center;
     padding: 0 8px;
     margin: 20px 0;
+    height: 20%;
 }
 
 .form-header  img {
