@@ -75,6 +75,11 @@
     height: 80%;
 }
 
+.input-wrapper ul {
+    max-width: 60%;
+    padding-top: 4px;
+}
+
 .form input {
     border: 1px solid lightgray;
     width: 60%;
@@ -90,3 +95,14 @@ input[type=submit] {
     cursor: pointer;
 }
 
+.demo-button {
+    border: 1px solid lightgray;
+    width: 60%;
+    height: 40px;
+    border-radius: 5px;
+    padding: 4px;
+    background-color: salmon;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './navbar.css';
 import rice from '../../images/rice.png'
 
@@ -12,7 +12,8 @@ class NavBar extends React.Component {
 
   logoutUser(e) {
       e.preventDefault();
-      this.props.logout();
+      this.props.logout()
+      this.props.history.push('/');
   }
 
   getLinks() {
@@ -26,7 +27,7 @@ class NavBar extends React.Component {
                 <Link to={"/new_burp"}>New Burp</Link>
               </div>
               <div className="navbar-right-items">
-                <Link to={"/profile"}>{this.props.handle}</Link>
+                <Link to={"/profile"}>{this.props.user.handle}</Link>
               </div>
               <div className="navbar-right-items">
                 <button onClick={this.logoutUser}>Logout</button>
@@ -68,4 +69,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

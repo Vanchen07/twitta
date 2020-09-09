@@ -11,20 +11,13 @@ class LoginForm extends React.Component {
         this.state = {
             email: '',
             password: '',
-            errors: {}
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDemo = this.handleDemo.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
     }
 
-    UNSAFE_componentWillReceiveProps(nextProps) {
-        if (nextProps.currentUser === true) {
-            this.props.history.push('/profile');
-        }
-
-        this.setState({ errors: nextProps.errors })
-    }
 
     update(field) {
         return e => this.setState({
@@ -40,15 +33,65 @@ class LoginForm extends React.Component {
             password: this.state.password
         };
 
-        this.props.login(user);
+        this.props.login(user).then(() => this.props.history.push('/main'))
     }
+
+
+    demoEmail(email, intervalSpeed) {
+        let i = 0;
+
+        setInterval(() => {
+            if (i <= email.length) {
+                this.setState({ email: email.slice(0, i) })
+                i++
+            } else {
+                clearInterval()
+            }
+        }, intervalSpeed);
+    }
+
+    demoPassword(password, intervalSpeed) {
+        let j = 0;
+
+        setInterval(() => {
+            if (j <= password.length) {
+                this.setState({ password: password.slice(0, j) })
+                j++
+            } else {
+                clearInterval();
+            }
+        }, intervalSpeed);
+    }
+
+    demo(user) {
+        const intervalSpeed = 75;
+        const { email, password } = user;
+        const demoEmailTime = email.length * intervalSpeed;
+        const demoPasswordTime = password.length * intervalSpeed;
+        const buffer = intervalSpeed * 2;
+        const totalDemoTime = demoEmailTime + demoPasswordTime + buffer;
+
+        this.demoEmail(email, intervalSpeed);
+        setTimeout(() => this.demoPassword(password, intervalSpeed), demoEmailTime);
+
+        setTimeout(() => this.props.login(user), totalDemoTime)
+
+        setTimeout(() => this.props.history.push('/main'), totalDemoTime + buffer)
+    }
+
+    handleDemo(e) {
+        e.preventDefault();
+        const user = { email: 'demo@demo.com', password: '123456' };
+        this.demo(user)
+    }
+
 
     renderErrors() {
         return (
             <ul>
-                {Object.keys(this.state.errors).map((error, i) => (
+                {Object.keys(this.props.errors).map((error, i) => (
                     <li key={`error-${i}`}>
-                        {this.state.errors[error]}
+                        {this.props.errors[error]}
                     </li>
                 ))}
             </ul>
@@ -90,6 +133,9 @@ class LoginForm extends React.Component {
                             />
                             <br />
                             <input type="submit" value="Login" />
+                            <br/>
+                            <button className="demo-button" onClick={this.handleDemo}>Demo Login</button>
+                            <br/>
                             {this.renderErrors()}
                         </div>
                     </form>
