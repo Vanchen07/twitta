@@ -17,6 +17,10 @@ class SignupForm extends React.Component {
         this.clearedErrors = false;
     }
 
+    componentDidMount() {
+        this.props.clearErrors()
+    }
+
     update(field) {
         return e => this.setState({
             [field]: e.currentTarget.value
@@ -25,13 +29,23 @@ class SignupForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+
+        let handle;
+        
+        if (this.state.handle) {
+            let first = this.state.handle[0].toUpperCase();
+            handle = first + this.state.handle.slice(1);
+        } else {
+            handle = this.state.handle;
+        }
+
         let user = {
             email: this.state.email,
-            handle: this.state.handle,
+            handle: handle,
             password: this.state.password,
         };
 
-        this.props.signup(user, this.props.history)
+        this.props.signup(user)
     }
 
     renderErrors() {

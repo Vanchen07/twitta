@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import { Switch } from 'react-router-dom';
+import { Switch, Route} from 'react-router-dom';
 
 import Splash from './splash/splash';
 import MainPage from './main/main_page';
@@ -12,13 +12,12 @@ import BurpComposeContainer from './burps/burp_compose_container';
 const App = () => (
   <div className="app">
     <Switch>
-      <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <ProtectedRoute exact path="/main" component={MainPage} />
-      <ProtectedRoute exact path="/profile" component={ProfileContainer} />
-      <ProtectedRoute exact path="/new_burp" component={BurpComposeContainer} />
-
-      <AuthRoute exact path="/" component={Splash} />
+      <AuthRoute path="/login" component={LoginFormContainer} />
+      <AuthRoute path="/signup" component={SignupFormContainer} />
+      <ProtectedRoute path="/main" component={MainPage} />
+      <ProtectedRoute path="/profile" component={ProfileContainer} />
+      <ProtectedRoute path="/new_burp" component={BurpComposeContainer} />
+      <Route path="/" component={Splash} />
     </Switch>
   </div>
 );

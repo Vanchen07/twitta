@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import NvaBarContainer from '../nav/navbar_container';
 
 class BurpCompose extends React.Component {
     constructor(props) {
@@ -32,7 +33,9 @@ class BurpCompose extends React.Component {
 
     render() {
         return (
-            <div> Write a Burp here
+            <div> 
+                <NvaBarContainer />
+                Write a Burp here
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <input type="textarea"

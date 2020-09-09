@@ -21,7 +21,7 @@ class NavBar extends React.Component {
           return (
             <div className="navbar-right">
               <div className="navbar-right-items">
-                <Link to={"/"}>All Burps</Link>
+                <Link to={"/main"}>All Burps</Link>
               </div>
               <div className="navbar-right-items">
                 <Link to={"/new_burp"}>New Burp</Link>
