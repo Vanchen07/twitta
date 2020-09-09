@@ -11,7 +11,6 @@ class SignupForm extends React.Component {
             email: '',
             handle: '',
             password: '',
-            password2: '',
             errors: {}
         };
 
@@ -39,7 +38,6 @@ class SignupForm extends React.Component {
             email: this.state.email,
             handle: this.state.handle,
             password: this.state.password,
-            password2: this.state.password2
         };
 
         this.props.signup(user, this.props.history)
@@ -62,7 +60,7 @@ class SignupForm extends React.Component {
             <div className="form-wrapper">
                 <div className="form-container">
                     <div className="form-image">
-                        <img src={menu}></img>
+                        <img src={menu} alt="menu"></img>
                         <div>
                         Already have an account? <Link to='/login'>Log in!</Link>
                         </div>
@@ -71,7 +69,7 @@ class SignupForm extends React.Component {
                     <form className="form" onSubmit={this.handleSubmit}>
                         <div className="form-header">
                             <Link to='/'>
-                                <img src={rice}></img>
+                                <img src={rice} alt="rice"></img>
                             </Link>
                             <h1>
                                 Ready to Join us?
@@ -94,12 +92,6 @@ class SignupForm extends React.Component {
                                 value={this.state.password}
                                 onChange={this.update('password')}
                                 placeholder="Password"
-                            />
-                            <br />
-                            <input type="password"
-                                value={this.state.password2}
-                                onChange={this.update('password2')}
-                                placeholder="Confirm Password"
                             />
                             <br />
                             <input type="submit" value="Submit" />

@@ -1,14 +1,13 @@
 const validator = require('validator');
 const validText = require('./valid-text');
 
-//create validation for tweets using validator library
-module.exports = function validateTweetInput(data) {
+module.exports = function validateBurpInput(data) {
     let errors = {};
 
     data.text = validText(data.text) ? data.text : '';
 
     if (!validator.isLength(data.text, { min: 5, max: 140})) {
-        errors.text = "Tweet must be between 5 and 140 chars"
+        errors.text = "Burp must be between 5 and 140 chars"
     }
 
     if (validator.isEmpty(data.text)) {

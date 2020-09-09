@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-class UserTweet extends React.Component {
+class UserBurp extends React.Component {
     constructor(props) {
         super(props)
         this.handleClick = this.handleClick.bind(this);
@@ -10,19 +10,19 @@ class UserTweet extends React.Component {
     handleClick(e) {
         e.preventDefault();
         this.props
-          .removeTweet(this.props.tweet._id)
-          .then(() => this.props.fetchUserTweets(this.props.currentUser.id));
+          .removeBurp(this.props.burp._id)
+          .then(() => this.props.fetchUserBurps(this.props.currentUser.id));
     }
 
     render() {
         return (
             <div>
                 {this.props.text}
-                <button onClick={this.handleClick}>Delete Tweet</button>
+                <button onClick={this.handleClick}>Delete Burp</button>
             </div>
         )
     }
     
 }
 
-export default withRouter(UserTweet);
+export default withRouter(UserBurp);

@@ -7,13 +7,8 @@ const jwt = require('jsonwebtoken');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
-// router.get("/allusers", (req, res) => {
-//     // debugger
-//     return res.json({ msg: "This is the users test route" })
-// }); // The callback for every Express route requires a request and response as arguments
 
 router.post("/register", (req, res) => {
-    // debugger
     const { errors, isValid } = validateRegisterInput(req.body);
 
     if(!isValid) {
@@ -31,7 +26,6 @@ router.post("/register", (req, res) => {
                 password: req.body.password
             })
             
-            // newUser.save().then(user => res.send(user)).catch(err => res.send(err));
             bcrypt.genSalt(10, (err, salt) => {
                 bcrypt.hash(newUser.password, salt, (err, hash) => {
                     if (err) throw err;
@@ -45,8 +39,8 @@ router.post("/register", (req, res) => {
             const payload = {
                 id: newUser.id,
                 handle: newUser.handle,
-                // email: newUser.email
             }
+
             jwt.sign(
                 payload,
                 keys.secretOrKey,
@@ -63,7 +57,6 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-    // debugger
     const { errors, isValid } = validateLoginInput(req.body);
 
     if (!isValid) {
@@ -85,9 +78,7 @@ router.post("/login", (req, res) => {
                 const payload = {
                     id: user.id,
                     handle: user.handle,
-                    // email: "test"
                 }
-                // res.json({msg: "Success!"});
 
                 jwt.sign(
                     payload,

@@ -1,30 +1,26 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import UserTweet from '../profile/user_tweets';
 
-class TweetCompose extends React.Component {
+class BurpCompose extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             text: "",
-            newTweet: ""
+            newBurp: ""
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // UNSAFE_componentWillReceiveProps(nextProps) {
-    //     this.setState({ newTweet: nextProps.newTweet.text });
-    // }
 
     handleSubmit(e) {
         e.preventDefault();
-        let tweet = {
+        let burp = {
             text: this.state.text
         };
 
-        this.props.composeTweet(tweet).then(this.props.history.push("/profile"));
+        this.props.composeBurp(burp).then(this.props.history.push("/profile"));
         this.setState({ text: '' })
     }
 
@@ -36,22 +32,21 @@ class TweetCompose extends React.Component {
 
     render() {
         return (
-            <div> Write a Tweet here
+            <div> Write a Burp here
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <input type="textarea"
                             value={this.state.text}
                             onChange={this.update()}
-                            placeholder="Write your tweet..."
+                            placeholder="Write your burp..."
                         />
                         <input type="submit" value="Submit" />
                     </div>
                 </form>
                 <br />
-                {/* <UserTweet text={this.state.newTweet} {...this.props}/> */}
             </div>
         )
     }
 }
 
-export default withRouter(TweetCompose);
+export default withRouter(BurpCompose);

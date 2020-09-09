@@ -1,14 +1,12 @@
-const validator = require("validator"); //libray of string validators
+const validator = require("validator"); 
 const validText = require("./valid-text");
 
-//create validation for tweets using validator library
 module.exports = function validateRegisterInput(data) {
     let errors = {};
 
     data.handle = validText(data.handle) ? data.handle : '';
     data.email = validText(data.email) ? data.email : '';
     data.password = validText(data.password) ? data.password : '';
-    data.password2 = validText(data.password2) ? data.password2 : '';
 
     if (!validator.isLength(data.handle, { min: 2, max: 30})) {
         errors.handle = "Handle must be between 2 and 30 chars";
@@ -32,10 +30,6 @@ module.exports = function validateRegisterInput(data) {
 
     if (!validator.isLength(data.password, { min: 2, max: 30})) {
         errors.password = "Password length must be between 2 and 30 chars";
-    }
-
-    if (!validator.equals(data.password, data.password2)) {
-        errors.password2 = "Passwords must match";
     }
 
     return {

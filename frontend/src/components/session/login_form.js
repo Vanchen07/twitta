@@ -18,24 +18,20 @@ class LoginForm extends React.Component {
         this.renderErrors = this.renderErrors.bind(this);
     }
 
-    // Once the user has been authenticated, redirect to the Tweets page
     UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.currentUser === true) {
             this.props.history.push('/profile');
         }
 
-        // Set or clear errors
         this.setState({ errors: nextProps.errors })
     }
 
-    // Handle field updates (called in the render method)
     update(field) {
         return e => this.setState({
             [field]: e.currentTarget.value
         });
     }
 
-    // Handle form submission
     handleSubmit(e) {
         e.preventDefault();
 
@@ -47,7 +43,6 @@ class LoginForm extends React.Component {
         this.props.login(user);
     }
 
-    // Render the session errors if there are any
     renderErrors() {
         return (
             <ul>
@@ -65,7 +60,7 @@ class LoginForm extends React.Component {
             <div className="form-wrapper">
                 <div className="form-container">
                     <div className="form-image">
-                        <img src={menu}></img>
+                        <img src={menu} alt="menu"></img>
                         <div>
                             Don't have an account? <Link to='/signup'>Join us!</Link>
                         </div>
@@ -75,7 +70,7 @@ class LoginForm extends React.Component {
                     <form className="form" onSubmit={this.handleSubmit}>
                         <div className="form-header">
                             <Link to='/'>
-                                <img src={rice}></img>
+                                <img src={rice} alt="rice"></img>
                             </Link>
                             <h1>
                                 Welcome Back!

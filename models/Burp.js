@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const TweetSchema = new Schema({
+const BurpSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'users'
@@ -16,6 +16,6 @@ const TweetSchema = new Schema({
     }
 });
 
-const Tweet = mongoose.model('tweet', TweetSchema);
+const Burp = mongoose.model('burp', BurpSchema);
 
-module.exports = Tweet;
+module.exports = Burp;

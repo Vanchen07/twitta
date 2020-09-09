@@ -1,6 +1,6 @@
 import React from 'react';
 import './main_page.css';
-import TweetsContainer from '../tweets/tweets_container';
+import BurpsContainer from '../burps/burps_container';
 import NavBarContainer from '../nav/navbar_container';
 
 class MainPage extends React.Component {
@@ -15,7 +15,7 @@ class MainPage extends React.Component {
                         Hear what people are drooling about.
                         Join the conversation.
                         Make a burp! */}
-                        <TweetsContainer />
+                        <BurpsContainer />
                 </div>
             </div>
         );

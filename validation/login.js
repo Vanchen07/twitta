@@ -1,14 +1,13 @@
-const validator = require("validator"); //library of string validators
+const validator = require("validator"); 
 const validText = require("./valid-text");
 
-//create validation for tweets using validator library
 module.exports = function(data) {
     let errors = {};
 
     data.email = validText(data.email) ? data.email : '';
     data.password = validText(data.password) ? data.password : '';
 
-    if (!validator.isEmail(data.email)) { //uses isEmail validator in validator library
+    if (!validator.isEmail(data.email)) { 
         errors.email = "Email is invalid";
     }
 

@@ -1,48 +1,39 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import UserTweet from './user_tweets';
-// import TweetComposeContainer from '../tweets/tweet_compose_container';
+import UserBurp from './user_burps';
 
 class Profile extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            tweets: []
+            burps: []
         }
     }
 
-    // UNSAFE_componentWillMount() {
-    //     // console.log(this.props.currentUser.id)
-    //     this.props.fetchUserTweets(this.props.currentUser.id);
-    // }
-
     componentDidMount() {
-        this.props.fetchUserTweets(this.props.currentUser.id);
+        this.props.fetchUserBurps(this.props.currentUser.id);
     }
 
     UNSAFE_componentWillReceiveProps(newState) {
-        this.setState({ tweets: newState.tweets });
+        this.setState({ burps: newState.burps });
     }
 
     render() {
-        if (this.state.tweets.length === 0) {
-            // return (<div>This user has no Tweets</div>)
+        if (this.state.burps.length === 0) {
             return null;
         } else {
             return (
               <div>
-                {/* <TweetComposeContainer {...this.props} /> */}
-                <h2>{`All of your Tweets`}</h2>
-                {/* <TweetComposeContainer /> */}
-                {this.props.tweets.map((tweet) => (
-                  <UserTweet
-                    key={tweet._id}
-                    tweet={tweet}
-                    text={tweet.text}
+                <h2>{`All of your Burps`}</h2>
+                {this.props.burps.map((burp) => (
+                  <UserBurp
+                    key={burp._id}
+                    burp={burp}
+                    text={burp.text}
                     currentUser={this.props.currentUser}
-                    fetchUserTweets={this.props.fetchUserTweets}
-                    removeTweet={this.props.removeTweet}
+                    fetchUserBurps={this.props.fetchUserBurps}
+                    removeBurp={this.props.removeBurp}
                   />
                 ))}
               </div>

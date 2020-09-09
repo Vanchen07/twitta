@@ -12,7 +12,7 @@ export default function (state = initialState, action) {
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
             return {
-                ...state, //pulling out keys in state, otherwise will be nested object
+                ...state, 
                 isAuthenticated: !!action.currentUser,
                 user: action.currentUser
             };
@@ -21,11 +21,6 @@ export default function (state = initialState, action) {
                 isAuthenticated: false,
                 user: undefined
             };
-        // case RECEIVE_USER_SIGN_IN:
-        //     return {
-        //         ...state,
-        //         isSignedIn: true
-        //     }
         default:
             return state;
     }

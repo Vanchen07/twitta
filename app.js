@@ -8,7 +8,7 @@ const db = require('./config/keys').mongoURI;
 const path = require('path');
 
 const users = require("./routes/api/users");
-const tweets = require("./routes/api/tweets");
+const burps = require("./routes/api/burps");
 
 const bodyParser = require('body-parser'); 
 
@@ -33,7 +33,7 @@ app.use(passport.initialize());
 require('./config/passport.js')(passport);
 
 app.use("/api/users", users); 
-app.use("/api/tweets", tweets); 
+app.use("/api/burps", burps); 
 
 const port = process.env.PORT || 5000; 
 

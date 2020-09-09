@@ -1,4 +1,4 @@
-.all-tweets {
+.all-burps {
     width: 50%;
     height: 100%;
     display: flex;
@@ -8,7 +8,7 @@
     text-align: center;
 }
 
-.tweetbox {
+.burpbox {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +16,7 @@
     width: 100%;
 }
 
-.tweets {
+.burps {
     border: 1px solid black;
     border-radius: 5px;
     height: 40px;
