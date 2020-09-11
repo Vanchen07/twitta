@@ -78,7 +78,7 @@
 .form input {
     border: 1px solid lightgray;
     width: 60%;
-    height: 40px;
+    height: 32px;
     border-radius: 5px;
     padding: 4px;
 }
@@ -93,7 +93,7 @@ input[type=submit] {
 .demo-button {
     border: 1px solid lightgray;
     width: 60%;
-    height: 40px;
+    height: 32px;
     border-radius: 5px;
     padding: 4px;
     background-color:lightslategrey;

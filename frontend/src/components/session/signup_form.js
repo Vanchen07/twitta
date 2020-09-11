@@ -10,7 +10,8 @@ class SignupForm extends React.Component {
         this.state = {
             email: '',
             handle: '',
-            password: ''
+            password: '',
+            blurb: ''
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,6 +32,8 @@ class SignupForm extends React.Component {
         e.preventDefault();
 
         let handle;
+        let avatar = 'default_avatar';
+        let blurb;
         
         if (this.state.handle) {
             let first = this.state.handle[0].toUpperCase();
@@ -39,10 +42,18 @@ class SignupForm extends React.Component {
             handle = this.state.handle;
         }
 
+        if (!this.state.blurb) {
+            blurb = "Hello, I love burping";
+        } else {
+            blurb = this.state.blurb
+        }
+
         let user = {
             email: this.state.email,
             handle: handle,
             password: this.state.password,
+            blurb: blurb,
+            avatar: avatar
         };
 
         this.props.signup(user)
@@ -62,49 +73,57 @@ class SignupForm extends React.Component {
 
     render() {
         return (
-            <div className="form-wrapper">
-                <div className="form-container">
-                    <div className="form-image">
-                        <img src={menu} alt="menu"></img>
-                        <div>
-                        Already have an account? <Link to='/login'>Log in!</Link>
-                        </div>
-                    </div>
-
-                    <form className="form" onSubmit={this.handleSubmit}>
-                        <div className="form-header">
-                            <Link to='/'>
-                                <img src={rice} alt="rice"></img>
-                            </Link>
-                            <h1>
-                                Ready to Join us?
-                            </h1>
-                        </div>
-                        <div className="input-wrapper">
-                            <input type="text"
-                                value={this.state.email}
-                                onChange={this.update('email')}
-                                placeholder="Email"
-                            />
-                            <br />
-                            <input type="text"
-                                value={this.state.handle}
-                                onChange={this.update('handle')}
-                                placeholder="Handle"
-                            />
-                            <br />
-                            <input type="password"
-                                value={this.state.password}
-                                onChange={this.update('password')}
-                                placeholder="Password"
-                            />
-                            <br />
-                            <input type="submit" value="Join!" />
-                            {this.renderErrors()}
-                        </div>
-                    </form>
+          <div className="form-wrapper">
+            <div className="form-container">
+              <div className="form-image">
+                <img src={menu} alt="menu"></img>
+                <div>
+                  Already have an account? <Link to="/login">Log in!</Link>
                 </div>
+              </div>
+
+              <form className="form" onSubmit={this.handleSubmit}>
+                <div className="form-header">
+                  <Link to="/">
+                    <img src={rice} alt="rice"></img>
+                  </Link>
+                  <h1>Ready to Join us?</h1>
+                </div>
+                <div className="input-wrapper">
+                  <input
+                    type="text"
+                    value={this.state.email}
+                    onChange={this.update("email")}
+                    placeholder="Email"
+                  />
+                  <br />
+                  <input
+                    type="text"
+                    value={this.state.handle}
+                    onChange={this.update("handle")}
+                    placeholder="Handle"
+                  />
+                  <br />
+                  <input
+                    type="password"
+                    value={this.state.password}
+                    onChange={this.update("password")}
+                    placeholder="Password"
+                  />
+                  <br />
+                  <input
+                    type="text"
+                    value={this.state.blurb}
+                    onChange={this.update("blurb")}
+                    placeholder="Blurb"
+                  />
+                  <br />
+                  <input type="submit" value="Join!" />
+                  {this.renderErrors()}
+                </div>
+              </form>
             </div>
+          </div>
         );
     }
 }

@@ -4,10 +4,7 @@ import Profile from './profile';
 
 const mapStateToProps = (state) => {
     return {
-        burps: Object.values(state.burps.user),
-        old: state.burps.old,
-        new: state.burps.new,
-        user: Object.values(state.burps.user),
+        burps: state.burps.user,
         currentUser: state.session.user
     };
 };
