@@ -1,8 +1,10 @@
 import React from 'react';
+import NavBar from '../../components/nav/navbar_container';
 import beagle from '../../images/beagle.png';
 import chihuahua from '../../images/chihuahua.png';
 import corgi from '../../images/corgi.png';
 import husky from '../../images/husky.png';
+import default_avatar from "../../images/default_avatar.png";
 
 class Headers extends React.Component {
   render() {
@@ -17,7 +19,7 @@ class Headers extends React.Component {
       );
     });
 
-    return <ul >{headers}</ul>;
+    return <ul className="edit-form-headers">{headers}</ul>;
   }
 }
 
@@ -25,108 +27,146 @@ export default class EditProfileForm extends React.Component {
   constructor(props) {
     super(props);
 
+    this.forms = ["Profile", "Avatar"];
+    this.avatars = { default_avatar, beagle, chihuahua, corgi, husky };
+
     this.state = {
       selectedForm: 0,
+      handle: props.currentUser.handle,
+      blurb: props.currentUser.blurb,
+      avatar: this.avatars[props.currentUser.avatar],
     };
 
-    this.forms = ['select a form','avatar', 'handle', 'blurb'];
-
-    this.selectForm = this.selectForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.selectForm = this.selectForm.bind(this);
   }
 
-  updateAvatar() {
-    console.log("clicked");
-    return (
-      <form className="form" onSubmit={this.handleSubmit}>
-        <div className="input-wrapper">
-          {/* <input
-                    type="text"
-                    value={this.state.handle}
-                    onChange={this.update("handle")}
-                    placeholder="Handle"
-                  /> */}
-          <br />
-          <input type="submit" value="Update Avatar!" />
-        </div>
-      </form>
-    );
+  componentDidMount() {
+    this.props.clearErrors();
   }
 
-  updateHandle() {
-    return (
-        <form className="form" onSubmit={this.handleSubmit}>
-            <div className="input-wrapper">
-                  {/* <input
-                    type="text"
-                    value={this.state.handle}
-                    onChange={this.update("handle")}
-                    placeholder="Handle"
-                  /> */}
-                  <br />
-                  <input type="submit" value="Update Handle!" />
-                </div>
-        </form>
-    )
+  update(field) {
+    return (e) =>
+      this.setState({
+        [field]: e.currentTarget.value,
+      });
   }
 
-  updateBlurb() {
-      console.log('in update blurb')
-    return (
-    <form className="form" onSubmit={this.handleSubmit}>
-        <div className="input-wrapper">
-        {/* <input
-                        type="text"
-                        value={this.state.handle}
-                        onChange={this.update("handle")}
-                        placeholder="Handle"
-                    /> */}
-        <br />
-        <input type="submit" value="Update Blurb!" />
-        </div>
-    </form>
-    );
-  }
+  renderAvatars() {
 
-  showDefaultForm() {
+    return Object.keys(this.avatars).map((key) => {
       return (
-          <div>default form</div>
-      )
+        <div onClick={this.handleAvatar()} key={key}>
+            <img
+                src={this.avatars[key]}
+                height="80px"
+                width="80px"
+                alt={this.avatars[key]}
+            />
+        </div>
+      );
+    });
+  }
+
+  handleAvatar() {
+    return (e) => 
+        this.setState({
+            avatar: e.target.alt
+        }, () => console.log(this.state))
+  }
+
+  renderDefaults() {
+    return (
+      <div className="defaults-container">
+        <form className="form">
+            <input
+              type="text"
+              value={this.state.handle}
+              onChange={this.update("handle")}
+              placeholder="Handle"
+            />
+            <input
+              type="text"
+              value={this.state.blurb}
+              onChange={this.update("blurb")}
+              placeholder="Blurb"
+            />
+        </form>
+      </div>
+    );
   }
 
   handleSubmit(e) {
     e.preventDefault();
 
+    let handle;
+    let blurb;
+
+    if (this.state.handle) {
+      let first = this.state.handle[0].toUpperCase();
+      handle = first + this.state.handle.slice(1);
+    } else {
+      handle = this.state.handle;
+    }
+
+    if (!this.state.blurb) {
+      blurb = "Hello, I love burping";
+    } else {
+      blurb = this.state.blurb;
+    }
+
+    let user = {
+      handle: handle,
+      blurb: blurb,
+      avatar: this.state.avatar,
+    };
+
+    this.props.updateUser(user);
   }
 
   selectForm(num) {
     this.setState({ selectedForm: num });
   }
 
+  renderErrors() {
+    return (
+      <ul>
+        {Object.keys(this.props.errors).map((error, i) => (
+          <li key={`error-${i}`}>{this.props.errors[error]}</li>
+        ))}
+      </ul>
+    );
+  }
+
   render() {
     let pane;
 
     if (this.state.selectedForm === 0) {
-        pane = this.showDefaultForm();
-    } else if (this.state.selectedForm === 1) {
-        pane = this.updateAvatar();
-    } else if (this.state.selectedForm === 2) {
-        pane = this.updateHandle();
+      pane = this.renderDefaults();
     } else {
-        pane = this.updateBlurb();
+      pane = this.renderAvatars();
     }
 
     return (
-      <div>
-        <h1>Forms</h1>
-        <div>
-          <Headers
-            selectedForm={this.state.selectedForm}
-            onTabChosen={this.selectForm}
-            forms={this.forms}
-          ></Headers>
-          <div >
-            <article>{pane}</article>
+      <div className="edit-form-wrapper">
+        <NavBar />
+        <div className="edit-form-container">
+          <div>
+            <img src={this.state.avatar} height="80px" width="80px" alt=""></img>
+          </div>
+
+          <div className="edit-form-options">
+            <div className="edit-buttons">
+              <h1>Edit Profile</h1>
+              <button>Update Profile</button>
+            </div>
+
+            <Headers
+              selectedForm={this.state.selectedForm}
+              onTabChosen={this.selectForm}
+              forms={this.forms}
+            />
+            {pane}
           </div>
         </div>
       </div>

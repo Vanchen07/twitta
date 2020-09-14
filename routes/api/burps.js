@@ -26,7 +26,7 @@ router.delete('/:id', (req, res) => {
     Burp.findByIdAndRemove(req.params.id)
         .then(() => res.json('Burp Deleted'))
         .catch(err =>
-            res.status(404).json({ noburpsfound: 'No burp found with that ID' })
+            res.status(404).json({ noburpfound: 'No burp found with that ID' })
         );
 });
 

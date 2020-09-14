@@ -1,6 +1,6 @@
 import { RECEIVE_BURPS, RECEIVE_BURP, RECEIVE_USER_BURPS, RECEIVE_NEW_BURP } from '../actions/burp_actions';
 
-const BurpsReducer = (state = { all: {}, user: {}, new: undefined, old: undefined }, action) => {
+const BurpsReducer = (state = { all: {}, user: [], new: undefined, old: undefined }, action) => {
     Object.freeze(state);
     let newState = Object.assign({}, state);
     switch (action.type) {

@@ -54,3 +54,9 @@ export const logout = () => dispatch => {
     APIUtil.setAuthToken(false)
     dispatch(logoutUser())
 };
+
+export const updateUser = (userData) => dispatch => {
+    APIUtil.updateUser(userData).then(res => {
+        dispatch()
+    })
+};
