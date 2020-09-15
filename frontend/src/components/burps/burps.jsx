@@ -16,7 +16,7 @@ class Burp extends React.Component {
             return (
                 <div className="all-burps">
                     {this.props.burps.map(burp => (
-                        <BurpBox key={burp._id} text={burp.text} author={burp.user.handle} />
+                        <BurpBox key={burp._id} text={burp.text} avatar={burp.user.avatar} author={burp.user.handle} />
                     ))}
                 </div>
             );

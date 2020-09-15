@@ -1,6 +1,4 @@
 .all-burps {
-    width: 50%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -10,18 +8,21 @@
 
 .burpbox {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    width: 100%;
+    margin: 8px 0;
+}
+
+.burp-author {
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    /* margin-right: 10px; */
 }
 
 .burps {
     border: 1px solid black;
     border-radius: 5px;
-    height: 40px;
-    width: 50%;
-    margin: 0 25px;
+    width: 400px;
+    padding: 4px;
     display: flex;
     align-items: center;
     justify-content: center;

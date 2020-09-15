@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from '../../components/nav/navbar_container';
+import NavBar from '../nav/navbar_container';
 import beagle from '../../images/beagle.png';
 import chihuahua from '../../images/chihuahua.png';
 import corgi from '../../images/corgi.png';
