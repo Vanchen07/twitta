@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import BurpBox from './burp_box';
 
 class UserBurp extends React.Component {
     constructor(props) {
@@ -16,11 +17,13 @@ class UserBurp extends React.Component {
 
     render() {
         return (
-            <div>
-                {this.props.text}
-                <button onClick={this.handleClick}>Delete Burp</button>
+          <div className="user-burps-container">
+            <BurpBox {...this.props} />
+            <div className="user-burps-icon">
+              <i onClick={this.handleClick} className="far fa-trash-alt"></i>
             </div>
-        )
+          </div>
+        );
     }
     
 }

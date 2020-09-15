@@ -32,21 +32,18 @@ class BurpCompose extends React.Component {
 
     render() {
         return (
-            <div> 
-                Write a Burp here
-                <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <input type="textarea"
-                            value={this.state.text}
-                            onChange={this.update()}
-                            placeholder="Write your burp..."
-                        />
-                        <input type="submit" value="Submit" />
-                    </div>
-                </form>
-                <br />
-            </div>
-        )
+          <div className="burp-compose-wrapper">
+              <div className="burp-compose-inputs">
+                <input
+                  type="textarea"
+                  value={this.state.text}
+                  onChange={this.update()}
+                  placeholder="What's burping...?"
+                />
+                <button onClick={this.handleSubmit}>Burp!</button>
+              </div>
+          </div>
+        );
     }
 }
 

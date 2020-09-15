@@ -1,17 +1,22 @@
 import React from 'react';
-import NavBar from '../nav/navbar_container';
+import NavBarContainer from '../nav/navbar_container';
 import beagle from '../../images/beagle.png';
 import chihuahua from '../../images/chihuahua.png';
 import corgi from '../../images/corgi.png';
 import husky from '../../images/husky.png';
 import default_avatar from "../../images/default_avatar.png";
+import "./profile.css";
 
 class Headers extends React.Component {
   render() {
     const headers = this.props.forms.map((form, index) => {
+      const selected = this.props.selectedForm;
+      const klass = index === selected ? "active" : "";
+
       return (
         <li
           key={index}
+          className={klass}
           onClick={() => this.props.onTabChosen(index)}
         >
           {form}{" "}
@@ -148,11 +153,16 @@ export default class EditProfileForm extends React.Component {
     }
 
     return (
-      <div className="edit-form-wrapper">
-        <NavBar />
-        <div className="edit-form-container">
-          <div>
-            <img src={this.state.avatar} height="80px" width="80px" alt=""></img>
+      <div>
+        <NavBarContainer />
+        <div className="profile">
+          <div className="profile-top">
+            <div className="profile-img">
+              <img
+                src={this.state.avatar}
+                alt=""
+              ></img>
+            </div>
           </div>
 
           <div className="edit-form-options">

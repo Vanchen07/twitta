@@ -20,11 +20,72 @@
 }
 
 .burps {
-    border: 1px solid black;
+    border: 1px solid lightsalmon;
     border-radius: 5px;
     width: 400px;
     padding: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+.burp-compose-wrapper {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin: 10px 0 20px 0;
+    padding: 8px;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+.burp-compose-wrapper form {
+    display: flex;
+}
+
+.burp-compose-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 8px;
+    /* border: 1px solid lightgray; */
+}
+
+.burp-compose-inputs input {
+    width: 80%;
+}
+
+.burp-compose-inputs button {
+    width: 75px;
+    height: 30px;
+    font-size: 16px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 4px;
+    background-color: lightslategrey;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+
+.fa-plus-circle {
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.user-burps-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fa-trash-alt {
+    font-size: 16px;
+}
+
+.user-burps-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+    cursor: pointer;
 }
