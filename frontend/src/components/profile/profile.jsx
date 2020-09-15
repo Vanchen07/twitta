@@ -4,6 +4,7 @@ import NavBarContainer from '../nav/navbar_container';
 import UserBurp from '../burps/user_burps'
 import default_avatar from "../../images/default_avatar.png";
 import './profile.css'
+import BurpCompose from '../burps/burp_compose_container';
 
 class Profile extends React.Component {
 
@@ -35,20 +36,25 @@ class Profile extends React.Component {
         <div>
           <NavBarContainer />
           <div className="profile">
-            <div className="profile-img">
-              <img src={default_avatar} height="80px" width="80px" alt=""></img>
+            <div className="profile-top">
+              <div className="profile-img">
+                <img src={default_avatar} alt=""></img>
+              </div>
+              <div className="profile-bio">
+                <div>{`Handle: ${this.props.currentUser.handle}`}</div>
+                <div>{`Blurb: ${this.props.currentUser.blurb}`}</div>
+                <div>{`Location: ${this.props.currentUser.location}`}</div>
+                <div>{`Favorite Foods: ${this.props.currentUser.favoriteFoods}`}</div>
+                <Link to="/profile/edit">
+                  <i className="fas fa-user-edit"></i>
+                </Link>
+              </div>
             </div>
-            <div className="profile-bio">
-              <div>{`Handle: ${this.props.currentUser.handle}`}</div>
-              <div>{`Blurb: ${this.props.currentUser.blurb}`}</div>
-              <div>{`Location: ${this.props.currentUser.location}`}</div>
-              <div>{`Favorite Foods: ${this.props.currentUser.favoriteFoods}`}</div>
-              <Link to="/profile/edit">
-                <i className="fas fa-user-edit"></i>
-              </Link>
+            <div className="profile-bottom">
+              <BurpCompose />
+              <h2>All of your Burps</h2>
+              {userBurps}
             </div>
-            <h2>{`All of your Burps`}</h2>
-            { userBurps }
           </div>
         </div>
       );
