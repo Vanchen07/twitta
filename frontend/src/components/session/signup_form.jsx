@@ -10,8 +10,7 @@ class SignupForm extends React.Component {
         this.state = {
             email: '',
             handle: '',
-            password: '',
-            blurb: ''
+            password: ''
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,7 +31,6 @@ class SignupForm extends React.Component {
 
         let handle;
         let avatar = 'default_avatar';
-        let blurb;
         
         if (this.state.handle) {
             let first = this.state.handle[0].toUpperCase();
@@ -41,17 +39,10 @@ class SignupForm extends React.Component {
             handle = this.state.handle;
         }
 
-        if (!this.state.blurb) {
-            blurb = "Hello, I love burping";
-        } else {
-            blurb = this.state.blurb
-        }
-
         let user = {
             email: this.state.email,
             handle: handle,
             password: this.state.password,
-            blurb: blurb,
             avatar: avatar
         };
 
@@ -108,13 +99,6 @@ class SignupForm extends React.Component {
                     value={this.state.password}
                     onChange={this.update("password")}
                     placeholder="Password"
-                  />
-                  <br />
-                  <input
-                    type="text"
-                    value={this.state.blurb}
-                    onChange={this.update("blurb")}
-                    placeholder="Blurb"
                   />
                   <br />
                   <input type="submit" value="Join!" />

@@ -24,8 +24,10 @@ router.post("/register", (req, res) => {
                 handle: req.body.handle,
                 email: req.body.email,
                 password: req.body.password,
-                blurb: req.body.blurb,
-                avatar: req.body.avatar
+                avatar: req.body.avatar,
+                blurb: '',
+                location: '',
+                favoriteFoods: ''
             })
             
             bcrypt.genSalt(10, (err, salt) => {
@@ -39,11 +41,13 @@ router.post("/register", (req, res) => {
             })
 
             const payload = {
-                id: newUser.id,
-                handle: newUser.handle,
-                blurb: newUser.blurb,
-                avatar: newUser.avatar
-            }
+              id: newUser.id,
+              handle: newUser.handle,
+              avatar: newUser.avatar,
+              blurb: newUser.blurb,
+              location: newUser.location,
+              favoriteFoods: newUser.favoriteFoods
+            };
 
             jwt.sign(
                 payload,
@@ -83,7 +87,9 @@ router.post("/login", (req, res) => {
                     id: user.id,
                     handle: user.handle,
                     avatar: user.avatar,
-                    blurb: user.blurb
+                    blurb: user.blurb,
+                    location: user.location,
+                    favoriteFoods: user.favoriteFoods
                 }
 
                 jwt.sign(
@@ -106,7 +112,7 @@ router.post("/login", (req, res) => {
 
 router.patch('/:id', (req, res) => {
     User.findByIdAndUpdate(req.params.id)
-      .then(() => res.json("User updated"))
+      .then((user) => res.json(user))
       .catch((err) =>
         res.status(404).json({ nouserfound: "No user found with that ID" })
       );

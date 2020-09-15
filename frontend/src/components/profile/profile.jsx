@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import NavBarContainer from '../nav/navbar_container';
-import UserBurp from './user_burps';
+import UserBurp from '../burps/user_burps'
 import default_avatar from "../../images/default_avatar.png";
 import './profile.css'
 
@@ -41,6 +41,8 @@ class Profile extends React.Component {
             <div className="profile-bio">
               <div>{`Handle: ${this.props.currentUser.handle}`}</div>
               <div>{`Blurb: ${this.props.currentUser.blurb}`}</div>
+              <div>{`Location: ${this.props.currentUser.location}`}</div>
+              <div>{`Favorite Foods: ${this.props.currentUser.favoriteFoods}`}</div>
               <Link to="/profile/edit">
                 <i className="fas fa-user-edit"></i>
               </Link>

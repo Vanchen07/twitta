@@ -20,7 +20,15 @@ const UserSchema = new Schema({
   },
   blurb: {
     type: String,
-    required: true,
+    required: false,
+  },
+  location: {
+    type: String,
+    required: false,
+  },
+  favoriteFoods: {
+    type: String,
+    required: false,
   },
   date: {
     type: Date,
