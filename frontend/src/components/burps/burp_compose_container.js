@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { composeBurp } from '../../actions/burp_actions';
+import { fetchUserBurps, composeBurp } from "../../actions/burp_actions";
 import BurpCompose from './burp_compose';
 
 const mapStateToProps = (state) => {
@@ -11,7 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        composeBurp: data => dispatch(composeBurp(data))
+      composeBurp: (data) => dispatch(composeBurp(data)),
+      fetchUserBurps: (id) => dispatch(fetchUserBurps(id)),
     };
 };
 

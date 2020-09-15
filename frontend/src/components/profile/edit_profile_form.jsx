@@ -90,7 +90,7 @@ export default class EditProfileForm extends React.Component {
         <form className="edit-form">
           {/* <div className="edit-input-wrapper"> */}
           <div className="edit-input-wrapper">
-            <label for="handle">Handle:</label>
+            <label >Handle:</label>
             <input
               id="handle"
               type="text"
@@ -101,7 +101,7 @@ export default class EditProfileForm extends React.Component {
           </div>
 
           <div className="edit-input-wrapper">
-            <label for="blurb">Blurb:</label>
+            <label >Blurb:</label>
             <input
               id="blurb"
               type="text"
@@ -111,7 +111,7 @@ export default class EditProfileForm extends React.Component {
             />
           </div>
           <div className="edit-input-wrapper">
-            <label for="favorite-foods">Favorite Foods:</label>
+            <label >Favorite Foods:</label>
             <input
               id="favorite-foods"
               type="text"
@@ -121,7 +121,7 @@ export default class EditProfileForm extends React.Component {
             />
           </div>
           <div className="edit-input-wrapper">
-            <label for="location">Location:</label>
+            <label >Location:</label>
             <input
               id="location"
               type="text"
@@ -156,9 +156,12 @@ export default class EditProfileForm extends React.Component {
     }
 
     let user = {
+      id: this.props.currentUser._id,
       handle: handle,
       blurb: blurb,
       avatar: this.state.avatar,
+      favoriteFoods: this.state.favoriteFoods,
+      location: this.state.location
     };
 
     this.props.updateUser(user);
@@ -191,14 +194,14 @@ export default class EditProfileForm extends React.Component {
       <div>
         <NavBarContainer />
         <div className="profile">
-
           <div className="edit-form-options">
             <div className="profile-top align">
               <div className="profile-img">
                 <img src={this.state.avatar} alt=""></img>
               </div>
-              <div className="edit-icon">
-                <i class="far fa-check-circle"></i>
+              <div className="edit-icon" onClick={this.handleSubmit}>
+                <i className="fas fa-check-circle"></i>
+                {/* <i class="far fa-check-circle"></i> */}
               </div>
             </div>
             <div>

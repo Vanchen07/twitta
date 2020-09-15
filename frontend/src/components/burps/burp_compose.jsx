@@ -7,7 +7,6 @@ class BurpCompose extends React.Component {
 
         this.state = {
             text: "",
-            newBurp: ""
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,7 +19,9 @@ class BurpCompose extends React.Component {
             text: this.state.text
         };
 
-        this.props.composeBurp(burp).then(this.props.history.push("/profile"));
+        this.props
+          .composeBurp(burp)
+          .then(() => this.props.fetchUserBurps(this.props.currentUser.id));
         this.setState({ text: '' })
     }
 

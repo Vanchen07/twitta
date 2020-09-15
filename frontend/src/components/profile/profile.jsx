@@ -7,10 +7,6 @@ import BurpCompose from '../burps/burp_compose_container';
 import './profile.css'
 
 class Profile extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
 
   componentDidMount() {
     this.props.fetchUserBurps(this.props.currentUser.id);
@@ -28,6 +24,7 @@ class Profile extends React.Component {
             key={burp._id}
             text={burp.text}
             burp={burp}
+            currentUser={this.props.currentUser}
             avatar={this.props.currentUser.avatar}
             fetchUserBurps={this.props.fetchUserBurps}
             removeBurp={this.props.removeBurp}
