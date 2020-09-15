@@ -4,6 +4,7 @@
     /* margin: 0 150px; */
     /* justify-content: center; */
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .profile-top {
@@ -59,11 +60,27 @@
     height: 100%;
 } */
 
-/* .edit-form {
+.edit-form {
     display: flex;
     flex-direction: column;
+    margin: 0 20px;
+}
+
+.edit-input-wrapper {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-} */
+    margin-top: 16px;
+}
+
+.edit-form input {
+    border: 1px solid lightgray;
+    width: 60%;
+    height: 32px;
+    border-radius: 5px;
+    padding: 4px;
+    margin-left: 5px;
+}
 
 .edit-form-options {
     display: flex;
@@ -71,12 +88,30 @@
     border: 1px solid lightgray;
     border-radius: 5px;
     width: 50%;
+    position: relative;
     /* box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3); */
 }
+
 
 .edit-buttons {
     display: flex;
     justify-content: center;
+    margin: 4px;
+    font-size: 18px;
+    /* color: lightslategrey; */
+}
+
+.edit-icon {
+    cursor: pointer;
+    text-align: end;
+    position: absolute;
+    top: 16px;
+    right: 20px;
+}
+
+.fa-check-circle {
+    font-size: 30px;
+    color: lightsalmon;
 }
 
 .edit-form-headers {
@@ -85,6 +120,7 @@
     justify-content: center;
     border-bottom: 1px solid lightgray;
     cursor: pointer;
+    margin: 4px;
     /* justify-content: center; */
 }
 
@@ -97,6 +133,27 @@
 }
 
 .defaults-container {
-    display: flex;
+    min-height: 475px;
+    /* display: flex; */
     /* justify-content: center; */
+}
+
+.avatars-container {
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+    padding: 8px;
+    min-height: 475px;
+    cursor: pointer;
+}
+
+.edit {
+    margin: 8px;
+}
+
+.align {
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }

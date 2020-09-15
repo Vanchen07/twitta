@@ -1,14 +1,9 @@
 import React from 'react';
 import './burps.css';
-import beagle from "../../images/beagle.png";
-import chihuahua from "../../images/chihuahua.png";
-import corgi from "../../images/corgi.png";
-import husky from "../../images/husky.png";
-import default_avatar from "../../images/default_avatar.png";
+import avatars from '../../images/avatars';
 
 const BurpBox = (props) => {
-  const avatars = { default_avatar, beagle, chihuahua, corgi, husky };
-  
+
   return (
     <div className="burpbox">
       <div className="burp-author">

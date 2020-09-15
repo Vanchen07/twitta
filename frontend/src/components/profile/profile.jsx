@@ -1,12 +1,8 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import NavBarContainer from '../nav/navbar_container';
-import UserBurp from '../burps/user_burps'
-import beagle from "../../images/beagle.png";
-import chihuahua from "../../images/chihuahua.png";
-import corgi from "../../images/corgi.png";
-import husky from "../../images/husky.png";
-import default_avatar from "../../images/default_avatar.png";
+import avatars from '../../images/avatars';
+import UserBurp from '../burps/user_burps';
 import BurpCompose from '../burps/burp_compose_container';
 import './profile.css'
 
@@ -14,7 +10,6 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
 
-    this.avatars = { default_avatar, beagle, chihuahua, corgi, husky };
   }
 
   componentDidMount() {
@@ -47,7 +42,7 @@ class Profile extends React.Component {
         <div className="profile">
           <div className="profile-top">
             <div className="profile-img">
-              <img src={this.avatars[this.props.currentUser.avatar]} alt=""></img>
+              <img src={avatars[this.props.currentUser.avatar]} alt=""></img>
               <Link to="/profile/edit">
                 <i className="fas fa-user-edit"></i>
               </Link>

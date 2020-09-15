@@ -1,10 +1,6 @@
 import React from 'react';
 import NavBarContainer from '../nav/navbar_container';
-import beagle from '../../images/beagle.png';
-import chihuahua from '../../images/chihuahua.png';
-import corgi from '../../images/corgi.png';
-import husky from '../../images/husky.png';
-import default_avatar from "../../images/default_avatar.png";
+import avatars from '../../images/avatars';
 import "./profile.css";
 
 class Headers extends React.Component {
@@ -33,13 +29,14 @@ export default class EditProfileForm extends React.Component {
     super(props);
 
     this.forms = ["Profile", "Avatar"];
-    this.avatars = { default_avatar, beagle, chihuahua, corgi, husky };
 
     this.state = {
       selectedForm: 0,
       handle: props.currentUser.handle,
       blurb: props.currentUser.blurb,
-      avatar: this.avatars[props.currentUser.avatar],
+      favoriteFoods: props.currentUser.favoriteFoods,
+      location: props.currentUser.location,
+      avatar: avatars[props.currentUser.avatar],
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -59,18 +56,25 @@ export default class EditProfileForm extends React.Component {
 
   renderAvatars() {
 
-    return Object.keys(this.avatars).map((key) => {
-      return (
-        <div onClick={this.handleAvatar()} key={key}>
-            <img
-                src={this.avatars[key]}
-                height="80px"
-                width="80px"
-                alt={this.avatars[key]}
-            />
-        </div>
-      );
-    });
+    return (
+      <div className="avatars-container">
+        {
+        Object.keys(avatars).map((key) => {
+        return (
+
+          <div className="profile-top" onClick={this.handleAvatar()} key={key}>
+            <div className="profile-img edit">
+              <img
+                  src={avatars[key]}
+                  alt={avatars[key]}
+              />
+            </div>
+          </div>
+          );
+        })
+        }
+      </div>
+    )
   }
 
   handleAvatar() {
@@ -83,19 +87,50 @@ export default class EditProfileForm extends React.Component {
   renderDefaults() {
     return (
       <div className="defaults-container">
-        <form className="form">
+        <form className="edit-form">
+          {/* <div className="edit-input-wrapper"> */}
+          <div className="edit-input-wrapper">
+            <label for="handle">Handle:</label>
             <input
+              id="handle"
               type="text"
               value={this.state.handle}
               onChange={this.update("handle")}
               placeholder="Handle"
             />
+          </div>
+
+          <div className="edit-input-wrapper">
+            <label for="blurb">Blurb:</label>
             <input
+              id="blurb"
               type="text"
               value={this.state.blurb}
               onChange={this.update("blurb")}
               placeholder="Blurb"
             />
+          </div>
+          <div className="edit-input-wrapper">
+            <label for="favorite-foods">Favorite Foods:</label>
+            <input
+              id="favorite-foods"
+              type="text"
+              value={this.state.favoriteFoods}
+              onChange={this.update("favoriteFoods")}
+              placeholder="Favorite foods"
+            />
+          </div>
+          <div className="edit-input-wrapper">
+            <label for="location">Location:</label>
+            <input
+              id="location"
+              type="text"
+              value={this.state.location}
+              onChange={this.update("location")}
+              placeholder="Favorite foods"
+            />
+          </div>
+          {/* </div> */}
         </form>
       </div>
     );
@@ -156,26 +191,27 @@ export default class EditProfileForm extends React.Component {
       <div>
         <NavBarContainer />
         <div className="profile">
-          <div className="profile-top">
-            <div className="profile-img">
-              <img
-                src={this.state.avatar}
-                alt=""
-              ></img>
-            </div>
-          </div>
 
           <div className="edit-form-options">
-            <div className="edit-buttons">
-              <h1>Edit Profile</h1>
-              <button>Update Profile</button>
+            <div className="profile-top align">
+              <div className="profile-img">
+                <img src={this.state.avatar} alt=""></img>
+              </div>
+              <div className="edit-icon">
+                <i class="far fa-check-circle"></i>
+              </div>
+            </div>
+            <div>
+              <div className="edit-buttons">
+                <h1>Edit Profile</h1>
+              </div>
+              <Headers
+                selectedForm={this.state.selectedForm}
+                onTabChosen={this.selectForm}
+                forms={this.forms}
+              />
             </div>
 
-            <Headers
-              selectedForm={this.state.selectedForm}
-              onTabChosen={this.selectForm}
-              forms={this.forms}
-            />
             {pane}
           </div>
         </div>

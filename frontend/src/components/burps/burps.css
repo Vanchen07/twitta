@@ -35,7 +35,7 @@
     border-radius: 5px;
     margin: 10px 0 20px 0;
     padding: 8px;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
 .burp-compose-wrapper form {
