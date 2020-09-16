@@ -1,8 +1,8 @@
 .splash-footer {
     background-color: lightslategrey;
     padding-top: 2rem;
-    position: relative;
-    min-height: 100px;
+    /* min-height: 100px; */
+    height: 20%;
     justify-content: center;
     justify-items: center;
     align-items: center;
@@ -19,7 +19,6 @@
 .footer-logo {
     height: 20px;
     top: 5px;
-    position: relative;
     padding: 0 5px;
 }
 

@@ -8,10 +8,10 @@ const Splash = () => {
     return (
       <div className="splash">
         <NavBarContainer />
-        <div className="splash-container">
+        {/* <div className="splash-container"> */}
           <Splashbody />
-          <Footer />
-        </div>
+        {/* </div> */}
+        <Footer />
       </div>
     );
 }

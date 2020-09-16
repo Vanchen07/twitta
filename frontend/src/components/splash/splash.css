@@ -1,17 +1,23 @@
 .splash {
     height: 100%;
-}
-
-.splash-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.splash-body {
-    /* height: 100%; */
-    display: flex;
+.splash-container {
+    /* display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 100%; */
+}
+
+.splash-body {
+    display: flex;
+    justify-content: space-between;
+    /* height: 100%; */
+    /* display: flex; */
+    /* flex-direction: column; */
     margin: 0 150px;
 }
 
@@ -22,6 +28,11 @@
 
 .splash-body-p {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
 }
 
+.splash-body-p article {
+    padding: 20px;
+}
