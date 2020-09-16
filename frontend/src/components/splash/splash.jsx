@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBarContainer from '../nav/navbar_container';
 import Footer from '../footer/footer';
+import Splashbody from './splashbody';
 import './splash.css';
 
 const Splash = () => {
@@ -8,7 +9,7 @@ const Splash = () => {
       <div className="splash">
         <NavBarContainer />
         <div className="splash-container">
-          <div className="splash-body">Splash body</div>
+          <Splashbody />
           <Footer />
         </div>
       </div>

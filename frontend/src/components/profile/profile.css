@@ -43,7 +43,7 @@
 }
 
 .fa-map-marker-alt {
-    color: lightsalmon;
+    color: salmon;
     margin-right: 4px;
 }
 
@@ -111,7 +111,7 @@
 
 .fa-check-circle {
     font-size: 30px;
-    color: lightsalmon;
+    color: salmon;
 }
 
 .edit-form-headers {
@@ -125,7 +125,7 @@
 }
 
 .active {
-    border-bottom: 1px solid lightsalmon;
+    border-bottom: 1px solid salmon;
 }
 
 .edit-form-headers li {
