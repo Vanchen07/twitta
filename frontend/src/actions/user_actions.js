@@ -1,5 +1,7 @@
+import { updateUser } from '../util/user_api_utils';
+
 export const updateUser = (userData) => (dispatch) => {
-  APIUtil.updateUser(userData).then((res) => {
+  updateUser(userData).then((res) => {
     dispatch();
   });
 };

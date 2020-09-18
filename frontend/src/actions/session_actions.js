@@ -55,8 +55,3 @@ export const logout = () => dispatch => {
     dispatch(logoutUser())
 };
 
-export const updateUser = (userData) => dispatch => {
-    APIUtil.updateUser(userData).then(res => {
-        dispatch()
-    })
-};
