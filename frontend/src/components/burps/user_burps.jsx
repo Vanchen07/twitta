@@ -12,7 +12,7 @@ class UserBurp extends React.Component {
         e.preventDefault();
         this.props
           .removeBurp(this.props.burp._id)
-          .then(() => this.props.fetchUserBurps(this.props.currentUser.id));
+          .then(() => this.props.fetchBurps());
     }
 
     render() {

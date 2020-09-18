@@ -9,16 +9,17 @@ import './profile.css'
 class Profile extends React.Component {
 
   componentDidMount() {
-    this.props.fetchUserBurps(this.props.currentUser.id);
+    this.props.fetchBurps();
   }
 
   render() {
     let userBurps;
 
-    if (this.props.burps.length === 0) {
+    if (!this.props.burps) {
       return null;
     } else {
-      userBurps = this.props.burps.user.map((burp) => {
+      userBurps = this.props.burps.map((burp) => {
+        // console.log('userBurps',this.props.burps)
         return (
           <UserBurp
             key={burp._id}
@@ -26,12 +27,13 @@ class Profile extends React.Component {
             burp={burp}
             currentUser={this.props.currentUser}
             avatar={this.props.currentUser.avatar}
-            fetchUserBurps={this.props.fetchUserBurps}
+            fetchBurps={this.props.fetchBurps}
             removeBurp={this.props.removeBurp}
           />
         );
       });
     }
+
 
     return (
       <div>

@@ -164,7 +164,7 @@ export default class EditProfileForm extends React.Component {
       location: this.state.location
     };
 
-    this.props.updateUser(user);
+    this.props.modifyUser(user);
   }
 
   selectForm(num) {

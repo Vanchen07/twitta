@@ -1,21 +1,21 @@
-import { RECEIVE_BURPS, RECEIVE_BURP, RECEIVE_USER_BURPS, RECEIVE_NEW_BURP } from '../actions/burp_actions';
+import {
+  RECEIVE_BURPS,
+  RECEIVE_BURP,
+  REMOVE_BURP,
+} from '../actions/burp_actions';
 
-const BurpsReducer = (state = { all: {}, user: [], new: undefined, old: undefined }, action) => {
+const BurpsReducer = (state = {}, action) => {
     Object.freeze(state);
-    let newState = Object.assign({}, state);
+    let nextState = Object.assign({}, state);
     switch (action.type) {
       case RECEIVE_BURPS:
-        newState.all = action.burps.data; 
-        return newState;
-      case RECEIVE_USER_BURPS:
-        newState.user = action.burps.data;
-        return newState;
-      case RECEIVE_NEW_BURP:
-        newState.new = action.burp.data;
-        return newState;
+        return Object.assign(nextState, action.burps.data)
       case RECEIVE_BURP: 
-        newState.old = action.burp.data;
-        return newState;
+        nextState[action.burp._id] = action.burp;
+        return nextState
+      case REMOVE_BURP:
+        delete nextState[action.burp._id]
+        return nextState;
       default:
         return state;
     }

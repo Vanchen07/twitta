@@ -5,7 +5,7 @@ import {
 
 const initialState = {
     isAuthenticated: false,
-    user: undefined
+    currentUser: undefined
 };
 
 export default function (state = initialState, action) {
@@ -19,7 +19,7 @@ export default function (state = initialState, action) {
         case RECEIVE_USER_LOGOUT:
             return {
                 isAuthenticated: false,
-                user: undefined
+                currentUser: undefined
             };
         default:
             return state;

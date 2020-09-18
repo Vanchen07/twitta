@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const passport = require("passport");
 const User = require('../../models/User');
 const bcrypt = require('bcryptjs');
 const keys = require('../../config/keys');
@@ -41,7 +42,7 @@ router.post("/register", (req, res) => {
             })
 
             const payload = {
-              id: newUser.id,
+              id: newUser._id,
               handle: newUser.handle,
               avatar: newUser.avatar,
               blurb: newUser.blurb,
@@ -71,8 +72,6 @@ router.post("/login", (req, res) => {
         return res.status(400).json(errors);
     }
 
-    debugger 
-    
     const email = req.body.email;
     const password = req.body.password;
 
@@ -86,7 +85,7 @@ router.post("/login", (req, res) => {
         .then(isMatch => {
             if(isMatch) {
                 const payload = {
-                    id: user.id,
+                    id: user._id,
                     handle: user.handle,
                     avatar: user.avatar,
                     blurb: user.blurb,
@@ -112,12 +111,28 @@ router.post("/login", (req, res) => {
     })
 })
 
-router.patch('/:id', (req, res) => {
+router.get('/', (req, res) => {
+    User.find()
+        .then( users => {
+            let allUsers = {};
+            
+            users.forEach(user =>
+                allUsers[user._doc._id] = user._doc
+            )
+
+            return res.json(allUsers)})
+        .catch(err => res.status(404).json({nousersfound: 'No users found'}))
+});
+
+router.patch("/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
     User.findByIdAndUpdate(req.params.id)
-      .then((user) => res.json(user))
-      .catch((err) =>
+      .then(user => res.json(user))
+      .catch(err =>
         res.status(404).json({ nouserfound: "No user found with that ID" })
       );
-});
+  }
+);
 
 module.exports = router; 
