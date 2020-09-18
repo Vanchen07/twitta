@@ -22,18 +22,27 @@ const Footer = () => {
           <div className="footer-social-icons">
             <a
               target="_blank"
+              rel="noopener noreferrer"
               href="https://www.linkedin.com/in/vanessa-chen-/"
             >
               <i className="fab fa-linkedin fa-lg"></i>
             </a>
           </div>
           <div className="footer-social-icons">
-            <a target="_blank" href="https://github.com/Vanchen07">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/Vanchen07"
+            >
               <i className="fab fa-github fa-lg"></i>
             </a>
           </div>
           <div className="footer-social-icons">
-            <a target="_blank" href="https://angel.co/vanessa-chen-7">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://angel.co/vanessa-chen-7"
+            >
               <i className="fab fa-angellist fa-lg"></i>
             </a>
           </div>
