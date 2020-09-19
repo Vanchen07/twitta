@@ -19,8 +19,9 @@ class Burp extends React.Component {
         } else {
             allBurps = this.props.burps.map((burp) => {
               let userId = burp.user;
+            //   console.log(this.props.users)
               let user = this.props.users[userId];
-
+            //   console.log('user', user)
               return (
                 <BurpBox
                   key={burp._id}

@@ -10,12 +10,15 @@ class Profile extends React.Component {
 
   componentDidMount() {
     this.props.fetchBurps();
+    this.props.fetchUsers();
   }
 
   render() {
     let userBurps;
 
     if (!this.props.burps) {
+      return null;
+    } else if (!this.props.currentUser) {
       return null;
     } else {
       userBurps = this.props.burps.map((burp) => {

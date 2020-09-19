@@ -127,7 +127,7 @@ router.get('/', (req, res) => {
 router.patch("/:id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    User.findByIdAndUpdate(req.params.id)
+    User.findByIdAndUpdate(req.params.id, req.body)
       .then(user => res.json(user))
       .catch(err =>
         res.status(404).json({ nouserfound: "No user found with that ID" })

@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { fetchBurps, removeBurp } from "../../actions/burp_actions";
 import Profile from './profile';
 import { getUserBurps } from '../../reducers/selectors';
+import { fetchUsers } from '../../actions/user_actions';
 
 const mapStateToProps = (state) => {
     return {
@@ -13,7 +14,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchBurps: () => dispatch(fetchBurps()),
-        removeBurp: (id) => dispatch(removeBurp(id))
+        removeBurp: (id) => dispatch(removeBurp(id)),
+        fetchUsers: () => dispatch(fetchUsers())
     };
 };
 

@@ -15,8 +15,8 @@ export const fetchUsers = () => (dispatch) => (
 );
 
 
-export const modifyUser = (userData) => (dispatch) =>
+export const modifyUser = (userData) => (dispatch) => (
   updateUser(userData)
-    .then((user) => dispatch(receiveCurrentUser(user))
+    .then((user) => dispatch(receiveCurrentUser(user)))
     .catch(err => console.log(err) )
 );

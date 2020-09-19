@@ -2,6 +2,7 @@ import React from 'react';
 import NavBarContainer from '../nav/navbar_container';
 import avatars from '../../images/avatars';
 import "./profile.css";
+import { withRouter } from 'react-router-dom';
 
 class Headers extends React.Component {
   render() {
@@ -24,7 +25,7 @@ class Headers extends React.Component {
   }
 }
 
-export default class EditProfileForm extends React.Component {
+class EditProfileForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -32,11 +33,11 @@ export default class EditProfileForm extends React.Component {
 
     this.state = {
       selectedForm: 0,
-      handle: props.currentUser.handle,
-      blurb: props.currentUser.blurb,
-      favoriteFoods: props.currentUser.favoriteFoods,
-      location: props.currentUser.location,
-      avatar: avatars[props.currentUser.avatar],
+      handle: '',
+      blurb: '',
+      favoriteFoods: '',
+      location: '',
+      avatar: '',
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -45,6 +46,19 @@ export default class EditProfileForm extends React.Component {
 
   componentDidMount() {
     this.props.clearErrors();
+    this.props.fetchUsers().then((users) => {
+      // console.log(users.users)
+      let user = users.users[this.props.currentUserId];
+
+      return this.setState({
+        handle: user.handle,
+        blurb: user.blurb,
+        favoriteFoods: user.favoriteFoods,
+        location: user.location,
+        avatar: avatars[user.avatar],
+      })
+      }
+    );
   }
 
   update(field) {
@@ -61,7 +75,6 @@ export default class EditProfileForm extends React.Component {
         {
         Object.keys(avatars).map((key) => {
         return (
-
           <div className="profile-top" onClick={this.handleAvatar()} key={key}>
             <div className="profile-img edit">
               <img
@@ -78,10 +91,11 @@ export default class EditProfileForm extends React.Component {
   }
 
   handleAvatar() {
-    return (e) => 
-        this.setState({
-            avatar: e.target.alt
-        }, () => console.log(this.state))
+    return (e) => {
+      return this.setState({
+          avatar: e.target.alt
+      }, () => console.log(this.state))
+    }
   }
 
   renderDefaults() {
@@ -155,16 +169,25 @@ export default class EditProfileForm extends React.Component {
       blurb = this.state.blurb;
     }
 
+    let avatarName;
+    Object.keys(avatars).forEach(key => {
+      if (avatars[key] === this.state.avatar) {
+        avatarName = key;
+      }
+    })
+
     let user = {
       id: this.props.currentUser._id,
       handle: handle,
       blurb: blurb,
-      avatar: this.state.avatar,
+      avatar: avatarName,
       favoriteFoods: this.state.favoriteFoods,
       location: this.state.location
     };
-
-    this.props.modifyUser(user);
+    
+    console.log(user)
+    
+    this.props.modifyUser(user).then(() => this.props.history.push('/profile'));
   }
 
   selectForm(num) {
@@ -222,3 +245,5 @@ export default class EditProfileForm extends React.Component {
     );
   }
 }
+
+export default withRouter(EditProfileForm);
