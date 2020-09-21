@@ -10,7 +10,7 @@
 
 * Users can view other users' profiles and their burps
 
-![Other User's profiles](others.png)
+![Other User's profiles](others_profile.png)
 
 * Logged in user can edit profile, update bio, change avatars
 * Logged in user can create a burp, view a list of their own burps, delete burps
