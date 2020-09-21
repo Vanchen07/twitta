@@ -36,7 +36,7 @@ router.post("/",
         if (!isValid) {
             return res.status(400).json(errors);
         }
-        
+      //  debugger
         const newBurp = new Burp({
             user: req.user.id,
             text: req.body.text
@@ -51,6 +51,7 @@ router.post("/",
 router.delete("/:id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    console.log(req.params.id)
     Burp.findByIdAndRemove(req.params.id)
       .then(burp => res.json(burp))
       .catch(err =>

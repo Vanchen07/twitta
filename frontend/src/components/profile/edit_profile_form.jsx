@@ -187,7 +187,7 @@ class EditProfileForm extends React.Component {
     
     console.log(user)
     
-    this.props.modifyUser(user).then(() => this.props.history.push('/profile'));
+    this.props.modifyUser(user).then(() => this.props.history.push(`/profile/${user.id}`));
   }
 
   selectForm(num) {

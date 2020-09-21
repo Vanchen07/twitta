@@ -18,7 +18,7 @@ class Profile extends React.Component {
 
     if (!this.props.burps) {
       return null;
-    } else if (!this.props.currentUser) {
+    } else if (Object.values(this.props.users).length === 0) {
       return null;
     } else {
       userBurps = this.props.burps.map((burp) => {
@@ -45,7 +45,7 @@ class Profile extends React.Component {
           <div className="profile-top">
             <div className="profile-img">
               <img src={avatars[this.props.currentUser.avatar]} alt=""></img>
-              <Link to="/profile/edit">
+              <Link to={`/profile/${this.props.currentUserId}/edit`}>
                 <i className="fas fa-user-edit"></i>
               </Link>
             </div>

@@ -14,7 +14,7 @@ const BurpsReducer = (state = {}, action) => {
         nextState[action.burp._id] = action.burp;
         return nextState
       case REMOVE_BURP:
-        delete nextState[action.burp._id]
+        delete nextState[action.burp.data._id]
         return nextState;
       default:
         return state;

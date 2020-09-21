@@ -7,7 +7,9 @@ import { fetchUsers } from '../../actions/user_actions';
 const mapStateToProps = (state) => {
     return {
         burps: getUserBurps(state),
-        currentUser: state.users[state.session.currentUser]
+        users: state.users,
+        currentUser: state.users[state.session.currentUser],
+        currentUserId: state.session.currentUser
     };
 };
 

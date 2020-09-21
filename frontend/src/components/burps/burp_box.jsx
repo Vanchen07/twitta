@@ -1,6 +1,7 @@
 import React from 'react';
 import './burps.css';
 import avatars from '../../images/avatars';
+import { Link } from 'react-router-dom';
 
 const BurpBox = (props) => {
 
@@ -8,7 +9,9 @@ const BurpBox = (props) => {
     <div className="burpbox">
       <div className="burp-author">
         <div>
-          <img src={avatars[props.avatar]} height="40px" width="40px" alt="" />
+          {/* <Link to={`/profile/${props.user._id}`}> */}
+            <img src={avatars[props.avatar]} height="40px" width="40px" alt="" />
+          {/* </Link> */}
         </div>
         <div>{props.author}</div>
       </div>

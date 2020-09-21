@@ -9,7 +9,7 @@ export default function (state = {}, action) {
       return Object.assign(nextState, action.users);
     case RECEIVE_CURRENT_USER:
       // debugger
-      nextState[action.currentUser.data.id] = action.currentUser
+      nextState[action.currentUser.data._id] = action.currentUser
       return nextState;
     default:
       return state;

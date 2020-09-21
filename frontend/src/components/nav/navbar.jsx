@@ -18,13 +18,14 @@ class NavBar extends React.Component {
 
   getLinks() {
       if (this.props.loggedIn) {
+        // debugger
           return (
             <div className="navbar-right">
               <div className="navbar-right-items">
                 <Link to={"/main"}>All Burps</Link>
               </div>
               <div className="navbar-right-items">
-                <Link to={"/profile"}>Profile</Link>
+                <Link to={`/profile/${this.props.currentUserId}`}>Profile</Link>
               </div>
               <div className="navbar-right-items">
                 <button onClick={this.logoutUser}>Logout</button>
