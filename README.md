@@ -6,17 +6,15 @@
 
 * Users can view burps from other users
 
-![Main](app/assets/images/main.png)
+![Main](main.png)
 
 * Users can view other users' profiles and their burps
 
-![Filters](app/assets/images/filters.png)
+![Other User's profiles](others.png)
 
 * Logged in user can edit profile, update bio, change avatars
-![Reserve](app/assets/images/reserve.png)
-
 * Logged in user can create a burp, view a list of their own burps, delete burps
-![Reservations](app/assets/images/reservations.png)
+![Own Profile](own_profile.png)
 
 ## Technologies
 * Express.js
