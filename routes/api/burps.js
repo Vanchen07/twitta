@@ -51,7 +51,7 @@ router.post("/",
 router.delete("/:id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    console.log(req.params.id)
+   
     Burp.findByIdAndRemove(req.params.id)
       .then(burp => res.json(burp))
       .catch(err =>

@@ -19,28 +19,11 @@ export const destroyBurp = (burp) => ({
     burp
 });
 
-// export const receiveUserBurps = burps => ({
-//     type: RECEIVE_USER_BURPS,
-//     burps
-// });
-
-// export const receiveNewBurp = burp => ({
-//     type: RECEIVE_NEW_BURP,
-//     burp
-// })
-
-
 export const fetchBurps = () => dispatch => (
     getBurps()
         .then(burps => dispatch(receiveBurps(burps)))
         .catch(err => console.log(err))
 );
-
-// export const fetchUserBurps = id => dispatch => (
-//     getUserBurps(id)
-//         .then(burps => dispatch(receiveUserBurps(burps)))
-//         .catch(err => console.log(err))
-// );
 
 export const composeBurp = data => dispatch => (
     writeBurp(data)

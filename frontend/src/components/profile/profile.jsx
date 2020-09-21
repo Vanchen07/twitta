@@ -48,7 +48,7 @@ class Profile extends React.Component {
     } else {
       // debugger
       userBurps = this.props.burps.map((burp) => {
-        // console.log('userBurps',this.props.burps)
+
         return (
           <UserBurp
             key={burp._id}

@@ -47,7 +47,7 @@ class EditProfileForm extends React.Component {
   componentDidMount() {
     this.props.clearErrors();
     this.props.fetchUsers().then((users) => {
-      // console.log(users.users)
+   
       let user = users.users[this.props.currentUserId];
 
       return this.setState({
@@ -184,8 +184,6 @@ class EditProfileForm extends React.Component {
       favoriteFoods: this.state.favoriteFoods,
       location: this.state.location
     };
-    
-    console.log(user)
     
     this.props.modifyUser(user).then(() => this.props.history.push(`/profile/${user.id}`));
   }
