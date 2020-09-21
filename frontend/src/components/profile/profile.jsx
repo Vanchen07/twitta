@@ -55,6 +55,8 @@ class Profile extends React.Component {
             text={burp.text}
             burp={burp}
             owner={this.props.owner}
+            ownerId={this.props.ownerId}
+            currentUserId={this.props.currentUserId}
             avatar={this.props.owner.avatar}
             handle={this.props.owner.handle}
             fetchBurps={this.props.fetchBurps}

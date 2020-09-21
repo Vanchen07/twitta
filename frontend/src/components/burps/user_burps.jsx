@@ -15,13 +15,23 @@ class UserBurp extends React.Component {
           .then(() => this.props.fetchBurps());
     }
 
+    showDelete() {
+       if (this.props.ownerId === this.props.currentUserId) {
+         return (
+           <div className="user-burps-icon">
+             <i onClick={this.handleClick} className="far fa-trash-alt"></i>
+           </div>
+         );
+       } else {
+         return null;
+       }
+    }
+
     render() {
         return (
           <div className="user-burps-container">
             <BurpBox {...this.props} />
-            <div className="user-burps-icon">
-              <i onClick={this.handleClick} className="far fa-trash-alt"></i>
-            </div>
+            {this.showDelete()}
           </div>
         );
     }
