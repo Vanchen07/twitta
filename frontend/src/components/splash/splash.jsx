@@ -4,7 +4,9 @@ import Footer from '../footer/footer';
 import Splashbody from './splashbody';
 import './splash.css';
 
-const Splash = () => {
+class Splash extends React.Component {
+
+  render () {
     return (
       <div className="splash">
         <NavBarContainer />
@@ -14,6 +16,7 @@ const Splash = () => {
         <Footer />
       </div>
     );
+  }
 }
 
 export default Splash;

@@ -16,8 +16,9 @@ const App = () => (
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
       <ProtectedRoute path="/main" component={MainPage} />
-      <ProtectedRoute path="/profile/edit" component={EditProfileFormContainer} />
-      <ProtectedRoute exact path="/profile" component={ProfileContainer} />
+      <ProtectedRoute path="/profile/:user_id/edit" component={EditProfileFormContainer} />
+      <ProtectedRoute path="/profile/:user_id" component={ProfileContainer} />
+      {/* <ProtectedRoute path="/profile" component={ProfileContainer} /> */}
       <ProtectedRoute path="/new_burp" component={BurpComposeContainer} />
       <Route path="/" component={Splash} />
     </Switch>

@@ -5,21 +5,22 @@ import {
 
 const initialState = {
     isAuthenticated: false,
-    user: {}
+    currentUser: undefined
 };
 
 export default function (state = initialState, action) {
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
+            // debugger
             return {
-                ...state, 
-                isAuthenticated: !!action.currentUser,
-                user: action.currentUser
+              ...state,
+              isAuthenticated: !!action.currentUser,
+              currentUser: action.currentUser.data._id,
             };
         case RECEIVE_USER_LOGOUT:
             return {
                 isAuthenticated: false,
-                user: undefined
+                currentUser: undefined
             };
         default:
             return state;

@@ -21,7 +21,7 @@ class BurpCompose extends React.Component {
 
         this.props
           .composeBurp(burp)
-          .then(() => this.props.fetchUserBurps(this.props.currentUser.id));
+          .then(() => this.props.fetchBurps());
         this.setState({ text: '' })
     }
 

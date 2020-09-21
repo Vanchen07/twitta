@@ -1,18 +1,25 @@
 import { connect } from 'react-redux';
-import { fetchUserBurps, removeBurp} from '../../actions/burp_actions';
+import { fetchBurps, removeBurp } from "../../actions/burp_actions";
 import Profile from './profile';
+import { getUserBurps } from '../../reducers/selectors';
+import { fetchUsers } from '../../actions/user_actions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        burps: state.burps,
-        currentUser: state.session.user
+      burps: getUserBurps(state.burps, ownProps.match.params.user_id),
+      users: state.users,
+      owner: state.users[ownProps.match.params.user_id],
+      ownerId: ownProps.match.params.user_id,
+      currentUser: state.users[state.session.currentUser],
+      currentUserId: state.session.currentUser,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchUserBurps: id => dispatch(fetchUserBurps(id)),
-        removeBurp: (id) => dispatch(removeBurp(id))
+        fetchBurps: () => dispatch(fetchBurps()),
+        removeBurp: (id) => dispatch(removeBurp(id)),
+        fetchUsers: () => dispatch(fetchUsers())
     };
 };
 

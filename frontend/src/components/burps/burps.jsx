@@ -6,21 +6,41 @@ class Burp extends React.Component {
 
     componentDidMount() {
         this.props.fetchBurps();
+        this.props.fetchUsers();
     }
 
-
     render() {
-        if (!this.props.burps.length === 0) {
-            return (<div>There are no Burps</div>)
+        let allBurps;
+
+        if (!this.props.burps ) {
+            return null;
+        } else if (Object.values(this.props.users).length === 0) {
+          // debugger
+            return null;
         } else {
-            return (
-                <div className="all-burps">
-                    {this.props.burps.map(burp => (
-                        <BurpBox key={burp._id} text={burp.text} avatar={burp.user.avatar} author={burp.user.handle} />
-                    ))}
-                </div>
-            );
+          // debugger
+            allBurps = this.props.burps.map((burp) => {
+              let userId = burp.user;
+              let user = this.props.users[userId];
+
+              return (
+                <BurpBox
+                  key={burp._id}
+                  text={burp.text}
+                  burp={burp}
+                  owner = {user}
+                  avatar={user.avatar}
+                  author={user.handle}
+                />
+              );
+            });
         }
+
+        return (
+            <div className="all-burps">
+                {allBurps}
+            </div>
+        );
     }
 }
 

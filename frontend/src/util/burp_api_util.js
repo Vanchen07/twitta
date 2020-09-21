@@ -4,9 +4,9 @@ export const getBurps = () => {
     return axios.get('/api/burps/')
 };
 
-export const getUserBurps = id => { 
-    return axios.get(`/api/burps/user/${id}`)
-};
+// export const getUserBurps = id => { 
+//     return axios.get(`/api/burps/user/${id}`)
+// };
 
 export const writeBurp = data => { 
     return axios.post('/api/burps/', data)
