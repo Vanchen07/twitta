@@ -7,10 +7,35 @@ import BurpCompose from '../burps/burp_compose_container';
 import './profile.css'
 
 class Profile extends React.Component {
-
   componentDidMount() {
     this.props.fetchBurps();
     this.props.fetchUsers();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.user_id !== prevProps.match.params.user_id) {
+      this.props.fetchBurps();
+    } 
+  }
+
+  showEdit() {
+    if (this.props.ownerId === this.props.currentUserId) {
+      return (
+        <Link to={`/profile/${this.props.currentUserId}/edit`}>
+          <i className="fas fa-user-edit"></i>
+        </Link>
+      );
+    } else {
+      return null;
+    }
+  }
+
+  showBurpCompose() {
+    if (this.props.ownerId === this.props.currentUserId) {
+      return <BurpCompose />;
+    } else {
+      return null
+    }
   }
 
   render() {
@@ -21,6 +46,7 @@ class Profile extends React.Component {
     } else if (Object.values(this.props.users).length === 0) {
       return null;
     } else {
+      // debugger
       userBurps = this.props.burps.map((burp) => {
         // console.log('userBurps',this.props.burps)
         return (
@@ -28,8 +54,9 @@ class Profile extends React.Component {
             key={burp._id}
             text={burp.text}
             burp={burp}
-            currentUser={this.props.currentUser}
-            avatar={this.props.currentUser.avatar}
+            owner={this.props.owner}
+            avatar={this.props.owner.avatar}
+            handle={this.props.owner.handle}
             fetchBurps={this.props.fetchBurps}
             removeBurp={this.props.removeBurp}
           />
@@ -37,31 +64,28 @@ class Profile extends React.Component {
       });
     }
 
-
     return (
       <div>
         <NavBarContainer />
         <div className="profile">
           <div className="profile-top">
             <div className="profile-img">
-              <img src={avatars[this.props.currentUser.avatar]} alt=""></img>
-              <Link to={`/profile/${this.props.currentUserId}/edit`}>
-                <i className="fas fa-user-edit"></i>
-              </Link>
+              <img src={avatars[this.props.owner.avatar]} alt=""></img>
+              {this.showEdit()}
             </div>
             <div className="profile-bio">
-              <div>{`Handle: ${this.props.currentUser.handle}`}</div>
-              <div>{`Blurb: ${this.props.currentUser.blurb}`}</div>
-              <div>{`Favorite Foods: ${this.props.currentUser.favoriteFoods}`}</div>
+              <div>{`Handle: ${this.props.owner.handle}`}</div>
+              <div>{`Blurb: ${this.props.owner.blurb}`}</div>
+              <div>{`Favorite Foods: ${this.props.owner.favoriteFoods}`}</div>
               <div>
                 <i className="fas fa-map-marker-alt"></i>
-                {`${this.props.currentUser.location}`}
+                {`${this.props.owner.location}`}
               </div>
             </div>
           </div>
           <div className="profile-bottom">
-            <BurpCompose />
-            <h2>My Burps</h2>
+            {this.showBurpCompose()}
+            <h2>{`${this.props.owner.handle}'s`} Burps</h2>
             {userBurps}
           </div>
         </div>

@@ -27,7 +27,8 @@ class Burp extends React.Component {
                 <BurpBox
                   key={burp._id}
                   text={burp.text}
-                  user = {user}
+                  burp={burp}
+                  owner = {user}
                   avatar={user.avatar}
                   author={user.handle}
                 />

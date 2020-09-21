@@ -1,10 +1,9 @@
-export const getUserBurps = (state) => {
-    let allBurps = Object.values(state.burps);
-    let userId = state.session.currentUser;
+export const getUserBurps = (burps, ownerId) => {
+    let allBurps = Object.values(burps);
     let userBurps = [];
     
     allBurps.forEach( burp => {
-        if (burp.user === userId) userBurps.push(burp);
+        if (burp.user === ownerId) userBurps.push(burp);
     })
 
     return userBurps;

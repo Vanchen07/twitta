@@ -4,14 +4,14 @@ import avatars from '../../images/avatars';
 import { Link } from 'react-router-dom';
 
 const BurpBox = (props) => {
-
+  // debugger
   return (
     <div className="burpbox">
       <div className="burp-author">
         <div>
-          {/* <Link to={`/profile/${props.user._id}`}> */}
+          <Link to={`/profile/${props.owner._id}`}>
             <img src={avatars[props.avatar]} height="40px" width="40px" alt="" />
-          {/* </Link> */}
+          </Link>
         </div>
         <div>{props.author}</div>
       </div>

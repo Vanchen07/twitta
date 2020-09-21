@@ -94,7 +94,7 @@ class EditProfileForm extends React.Component {
     return (e) => {
       return this.setState({
           avatar: e.target.alt
-      }, () => console.log(this.state))
+      })
     }
   }
 

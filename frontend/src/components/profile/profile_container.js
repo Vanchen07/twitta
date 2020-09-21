@@ -4,12 +4,14 @@ import Profile from './profile';
 import { getUserBurps } from '../../reducers/selectors';
 import { fetchUsers } from '../../actions/user_actions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        burps: getUserBurps(state),
-        users: state.users,
-        currentUser: state.users[state.session.currentUser],
-        currentUserId: state.session.currentUser
+      burps: getUserBurps(state.burps, ownProps.match.params.user_id),
+      users: state.users,
+      owner: state.users[ownProps.match.params.user_id],
+      ownerId: ownProps.match.params.user_id,
+      currentUser: state.users[state.session.currentUser],
+      currentUserId: state.session.currentUser,
     };
 };
 
