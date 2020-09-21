@@ -25,7 +25,7 @@ class NavBar extends React.Component {
                 <Link to={"/main"}>All Burps</Link>
               </div>
               <div className="navbar-right-items">
-                <Link to={`/profile/${this.props.currentUserId}`}>Profile</Link>
+                <Link to={`/profile/${this.props.currentUserId}`}>My Profile</Link>
               </div>
               <div className="navbar-right-items">
                 <button onClick={this.logoutUser}>Logout</button>
