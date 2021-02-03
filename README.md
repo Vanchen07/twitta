@@ -1,5 +1,5 @@
 
-[Burps](https://burp-burp.herokuapp.com/#/) is a clone of the popular social media app, Twitter. Users can express their food cravings through burps and see what others are burping as well.
+[Burps](https://burp-burp.herokuapp.com/#/) is inspired by the popular social media app, Twitter. Users can express their food cravings through burps and see what others are burping as well.
 
 ![Splash](splash.png)
 
