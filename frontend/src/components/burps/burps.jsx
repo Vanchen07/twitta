@@ -29,8 +29,8 @@ class Burp extends React.Component {
                   text={burp.text}
                   burp={burp}
                   owner = {user}
-                  avatar={user.avatar}
-                  author={user.handle}
+                  avatar={user?.avatar || ''}
+                  author={user?.handle || ''}
                 />
               );
             });
