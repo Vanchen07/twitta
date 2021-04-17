@@ -12,7 +12,7 @@ class Burp extends React.Component {
     render() {
         let allBurps;
 
-        if (!this.props.burps ) {
+        if (!this.props.burps || !this.props.burps.length ) {
             return null;
         } else if (Object.values(this.props.users).length === 0) {
             return null;
