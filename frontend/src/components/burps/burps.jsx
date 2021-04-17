@@ -14,7 +14,7 @@ class Burp extends React.Component {
 
         if (!this.props.burps || !this.props.burps.length ) {
             return null;
-        } else if (Object.values(this.props.users).length === 0) {
+        } else if (!Object.values(this.props.users).length) {
             return null;
         } else {
             allBurps = this.props.burps.map((burp) => {
