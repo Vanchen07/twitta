@@ -4,7 +4,6 @@ import avatars from '../../images/avatars';
 import { Link } from 'react-router-dom';
 
 const BurpBox = (props) => {
-  if (!props) return null;
 
   return (
     <div className="burpbox">
