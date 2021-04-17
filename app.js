@@ -1,6 +1,6 @@
 const mongoose = require('mongoose'); 
 
-const passport = require('passport'); 
+const passport = require('passport');
 
 const express = require('express');
 const db = require('./config/keys').mongoURI; 
@@ -9,8 +9,6 @@ const path = require('path');
 
 const users = require("./routes/api/users");
 const burps = require("./routes/api/burps");
-
-const bodyParser = require('body-parser'); 
 
 mongoose
     .connect(db, { useNewUrlParser: true, useUnifiedTopology: true}) 
@@ -26,11 +24,13 @@ if (process.env.NODE_ENV === 'production') {
     })
 }
 
-app.use(bodyParser.urlencoded({ extended: false })); 
-app.use(bodyParser.json()); 
+app.use(express.urlencoded()); 
+app.use(express.json()); 
 
 app.use(passport.initialize()); 
-require('./config/passport.js')(passport);
+
+const passportConfiguration = require('./config/passport.js');
+passportConfiguration(passport);
 
 app.use("/api/users", users); 
 app.use("/api/burps", burps); 

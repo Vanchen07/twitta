@@ -18,7 +18,6 @@ class NavBar extends React.Component {
 
   getLinks() {
       if (this.props.loggedIn) {
-        // debugger
           return (
             <div className="navbar-right">
               <div className="navbar-right-items">
